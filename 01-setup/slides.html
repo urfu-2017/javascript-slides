@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<!-- saved from url=(0025)http://localhost:54630/#/ -->
+<html lang="en" class=" js no-mobile desktop no-ie chrome chrome60 root-section w-1276 gt-240 gt-320 gt-480 gt-640 gt-768 gt-800 gt-1024 lt-1280 lt-1440 lt-1680 lt-1920 no-portrait landscape gradient rgba opacity textshadow multiplebgs boxshadow borderimage borderradius cssreflections csstransforms csstransitions no-touch retina fontface domloaded" id="index-page"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        
+        <title>RevealJS : /Users/grumpy/workspace/javascript-slides-2017/01-setup/slides.md</title>
+        <link rel="stylesheet" href="./slides_files/reveal.css">
+        <link rel="stylesheet" href="./slides_files/white.css" id="theme">
+        <link rel="stylesheet" href="./slides_files/yandex.css" id="theme">
+        <!-- For syntax highlighting -->
+        <link rel="stylesheet" href="./slides_files/github.css">
+        <link rel="stylesheet" href="./slides_files/undefined.css">
+
+        <!-- If the query includes 'print-pdf', use the PDF print sheet -->
+        <script>
+          document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+        </script><link rel="stylesheet" href="./slides_files/paper.css" type="text/css" media="print"><script type="text/javascript" src="./slides_files/marked.js"></script><script type="text/javascript" src="./slides_files/markdown.js"></script><script type="text/javascript" src="./slides_files/highlight.js"></script><script type="text/javascript" src="./slides_files/notes.js"></script><script type="text/javascript" src="./slides_files/math.js"></script>
+    <script type="text/javascript" src="./slides_files/MathJax.js"></script><style type="text/css">.MathJax_Hover_Frame {border-radius: .25em; -webkit-border-radius: .25em; -moz-border-radius: .25em; -khtml-border-radius: .25em; box-shadow: 0px 0px 15px #83A; -webkit-box-shadow: 0px 0px 15px #83A; -moz-box-shadow: 0px 0px 15px #83A; -khtml-box-shadow: 0px 0px 15px #83A; border: 1px solid #A6D ! important; display: inline-block; position: absolute}
+.MathJax_Menu_Button .MathJax_Hover_Arrow {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 4px; -webkit-border-radius: 4px; -moz-border-radius: 4px; -khtml-border-radius: 4px; font-family: 'Courier New',Courier; font-size: 9px; color: #F0F0F0}
+.MathJax_Menu_Button .MathJax_Hover_Arrow span {display: block; background-color: #AAA; border: 1px solid; border-radius: 3px; line-height: 0; padding: 4px}
+.MathJax_Hover_Arrow:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_Hover_Arrow:hover span {background-color: #CCC!important}
+</style><style type="text/css">#MathJax_About {position: fixed; left: 50%; width: auto; text-align: center; border: 3px outset; padding: 1em 2em; background-color: #DDDDDD; color: black; cursor: default; font-family: message-box; font-size: 120%; font-style: normal; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 15px; -webkit-border-radius: 15px; -moz-border-radius: 15px; -khtml-border-radius: 15px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_About.MathJax_MousePost {outline: none}
+.MathJax_Menu {position: absolute; background-color: white; color: black; width: auto; padding: 5px 0px; border: 1px solid #CCCCCC; margin: 0; cursor: default; font: menu; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 5px; -webkit-border-radius: 5px; -moz-border-radius: 5px; -khtml-border-radius: 5px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+.MathJax_MenuItem {padding: 1px 2em; background: transparent}
+.MathJax_MenuArrow {position: absolute; right: .5em; padding-top: .25em; color: #666666; font-size: .75em}
+.MathJax_MenuActive .MathJax_MenuArrow {color: white}
+.MathJax_MenuArrow.RTL {left: .5em; right: auto}
+.MathJax_MenuCheck {position: absolute; left: .7em}
+.MathJax_MenuCheck.RTL {right: .7em; left: auto}
+.MathJax_MenuRadioCheck {position: absolute; left: .7em}
+.MathJax_MenuRadioCheck.RTL {right: .7em; left: auto}
+.MathJax_MenuLabel {padding: 1px 2em 3px 1.33em; font-style: italic}
+.MathJax_MenuRule {border-top: 1px solid #DDDDDD; margin: 4px 3px}
+.MathJax_MenuDisabled {color: GrayText}
+.MathJax_MenuActive {background-color: #606872; color: white}
+.MathJax_MenuDisabled:focus, .MathJax_MenuLabel:focus {background-color: #E8E8E8}
+.MathJax_ContextMenu:focus {outline: none}
+.MathJax_ContextMenu .MathJax_MenuItem:focus {outline: none}
+#MathJax_AboutClose {top: .2em; right: .2em}
+.MathJax_Menu .MathJax_MenuClose {top: -10px; left: -10px}
+.MathJax_MenuClose {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; font-family: 'Courier New',Courier; font-size: 24px; color: #F0F0F0}
+.MathJax_MenuClose span {display: block; background-color: #AAA; border: 1.5px solid; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; line-height: 0; padding: 8px 0 6px}
+.MathJax_MenuClose:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_MenuClose:hover span {background-color: #CCC!important}
+.MathJax_MenuClose:hover:focus {outline: none}
+</style><style type="text/css">.MathJax_Preview .MJXf-math {color: inherit!important}
+</style><style type="text/css">.MJX_Assistive_MathML {position: absolute!important; top: 0; left: 0; clip: rect(1px, 1px, 1px, 1px); padding: 1px 0 0 0!important; border: 0!important; height: 1px!important; width: 1px!important; overflow: hidden!important; display: block!important; -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none}
+.MJX_Assistive_MathML.MJX_Assistive_MathML_Block {width: 100%!important}
+</style><style type="text/css">#MathJax_Zoom {position: absolute; background-color: #F0F0F0; overflow: auto; display: block; z-index: 301; padding: .5em; border: 1px solid black; margin: 0; font-weight: normal; font-style: normal; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; -webkit-box-sizing: content-box; -moz-box-sizing: content-box; box-sizing: content-box; box-shadow: 5px 5px 15px #AAAAAA; -webkit-box-shadow: 5px 5px 15px #AAAAAA; -moz-box-shadow: 5px 5px 15px #AAAAAA; -khtml-box-shadow: 5px 5px 15px #AAAAAA; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_ZoomOverlay {position: absolute; left: 0; top: 0; z-index: 300; display: inline-block; width: 100%; height: 100%; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+#MathJax_ZoomFrame {position: relative; display: inline-block; height: 0; width: 0}
+#MathJax_ZoomEventTrap {position: absolute; left: 0; top: 0; z-index: 302; display: inline-block; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+</style><style type="text/css">.MathJax_Preview {color: #888}
+#MathJax_Message {position: fixed; left: 1em; bottom: 1.5em; background-color: #E6E6E6; border: 1px solid #959595; margin: 0px; padding: 2px 8px; z-index: 102; color: black; font-size: 80%; width: auto; white-space: nowrap}
+#MathJax_MSIE_Frame {position: absolute; top: 0; left: 0; width: 0px; z-index: 101; border: 0px; margin: 0px; padding: 0px}
+.MathJax_Error {color: #CC0000; font-style: italic}
+</style><style type="text/css">.MJXp-script {font-size: .8em}
+.MJXp-right {-webkit-transform-origin: right; -moz-transform-origin: right; -ms-transform-origin: right; -o-transform-origin: right; transform-origin: right}
+.MJXp-bold {font-weight: bold}
+.MJXp-italic {font-style: italic}
+.MJXp-scr {font-family: MathJax_Script,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-frak {font-family: MathJax_Fraktur,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-sf {font-family: MathJax_SansSerif,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-cal {font-family: MathJax_Caligraphic,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-mono {font-family: MathJax_Typewriter,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-largeop {font-size: 150%}
+.MJXp-largeop.MJXp-int {vertical-align: -.2em}
+.MJXp-math {display: inline-block; line-height: 1.2; text-indent: 0; font-family: 'Times New Roman',Times,STIXGeneral,serif; white-space: nowrap; border-collapse: collapse}
+.MJXp-display {display: block; text-align: center; margin: 1em 0}
+.MJXp-math span {display: inline-block}
+.MJXp-box {display: block!important; text-align: center}
+.MJXp-box:after {content: " "}
+.MJXp-rule {display: block!important; margin-top: .1em}
+.MJXp-char {display: block!important}
+.MJXp-mo {margin: 0 .15em}
+.MJXp-mfrac {margin: 0 .125em; vertical-align: .25em}
+.MJXp-denom {display: inline-table!important; width: 100%}
+.MJXp-denom > * {display: table-row!important}
+.MJXp-surd {vertical-align: top}
+.MJXp-surd > * {display: block!important}
+.MJXp-script-box > *  {display: table!important; height: 50%}
+.MJXp-script-box > * > * {display: table-cell!important; vertical-align: top}
+.MJXp-script-box > *:last-child > * {vertical-align: bottom}
+.MJXp-script-box > * > * > * {display: block!important}
+.MJXp-mphantom {visibility: hidden}
+.MJXp-munderover {display: inline-table!important}
+.MJXp-over {display: inline-block!important; text-align: center}
+.MJXp-over > * {display: block!important}
+.MJXp-munderover > * {display: table-row!important}
+.MJXp-mtable {vertical-align: .25em; margin: 0 .125em}
+.MJXp-mtable > * {display: inline-table!important; vertical-align: middle}
+.MJXp-mtr {display: table-row!important}
+.MJXp-mtd {display: table-cell!important; text-align: center; padding: .5em 0 0 .5em}
+.MJXp-mtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-mlabeledtr {display: table-row!important}
+.MJXp-mlabeledtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mlabeledtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-merror {background-color: #FFFF88; color: #CC0000; border: 1px solid #CC0000; padding: 1px 3px; font-style: normal; font-size: 90%}
+.MJXp-scale0 {-webkit-transform: scaleX(.0); -moz-transform: scaleX(.0); -ms-transform: scaleX(.0); -o-transform: scaleX(.0); transform: scaleX(.0)}
+.MJXp-scale1 {-webkit-transform: scaleX(.1); -moz-transform: scaleX(.1); -ms-transform: scaleX(.1); -o-transform: scaleX(.1); transform: scaleX(.1)}
+.MJXp-scale2 {-webkit-transform: scaleX(.2); -moz-transform: scaleX(.2); -ms-transform: scaleX(.2); -o-transform: scaleX(.2); transform: scaleX(.2)}
+.MJXp-scale3 {-webkit-transform: scaleX(.3); -moz-transform: scaleX(.3); -ms-transform: scaleX(.3); -o-transform: scaleX(.3); transform: scaleX(.3)}
+.MJXp-scale4 {-webkit-transform: scaleX(.4); -moz-transform: scaleX(.4); -ms-transform: scaleX(.4); -o-transform: scaleX(.4); transform: scaleX(.4)}
+.MJXp-scale5 {-webkit-transform: scaleX(.5); -moz-transform: scaleX(.5); -ms-transform: scaleX(.5); -o-transform: scaleX(.5); transform: scaleX(.5)}
+.MJXp-scale6 {-webkit-transform: scaleX(.6); -moz-transform: scaleX(.6); -ms-transform: scaleX(.6); -o-transform: scaleX(.6); transform: scaleX(.6)}
+.MJXp-scale7 {-webkit-transform: scaleX(.7); -moz-transform: scaleX(.7); -ms-transform: scaleX(.7); -o-transform: scaleX(.7); transform: scaleX(.7)}
+.MJXp-scale8 {-webkit-transform: scaleX(.8); -moz-transform: scaleX(.8); -ms-transform: scaleX(.8); -o-transform: scaleX(.8); transform: scaleX(.8)}
+.MJXp-scale9 {-webkit-transform: scaleX(.9); -moz-transform: scaleX(.9); -ms-transform: scaleX(.9); -o-transform: scaleX(.9); transform: scaleX(.9)}
+.MathJax_PHTML .noError {vertical-align: ; font-size: 90%; text-align: left; color: black; padding: 1px 3px; border: 1px solid}
+</style><style type="text/css">.MathJax_Display {text-align: center; margin: 1em 0em; position: relative; display: block!important; text-indent: 0; max-width: none; max-height: none; min-width: 0; min-height: 0; width: 100%}
+.MathJax .merror {background-color: #FFFF88; color: #CC0000; border: 1px solid #CC0000; padding: 1px 3px; font-style: normal; font-size: 90%}
+.MathJax .MJX-monospace {font-family: monospace}
+.MathJax .MJX-sans-serif {font-family: sans-serif}
+#MathJax_Tooltip {background-color: InfoBackground; color: InfoText; border: 1px solid black; box-shadow: 2px 2px 5px #AAAAAA; -webkit-box-shadow: 2px 2px 5px #AAAAAA; -moz-box-shadow: 2px 2px 5px #AAAAAA; -khtml-box-shadow: 2px 2px 5px #AAAAAA; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true'); padding: 3px 4px; z-index: 401; position: absolute; left: 0; top: 0; width: auto; height: auto; display: none}
+.MathJax {display: inline; font-style: normal; font-weight: normal; line-height: normal; font-size: 100%; font-size-adjust: none; text-indent: 0; text-align: left; text-transform: none; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0; min-height: 0; border: 0; padding: 0; margin: 0}
+.MathJax:focus, body :focus .MathJax {display: inline-table}
+.MathJax.MathJax_FullWidth {text-align: center; display: table-cell!important; width: 10000em!important}
+.MathJax img, .MathJax nobr, .MathJax a {border: 0; padding: 0; margin: 0; max-width: none; max-height: none; min-width: 0; min-height: 0; vertical-align: 0; line-height: normal; text-decoration: none}
+img.MathJax_strut {border: 0!important; padding: 0!important; margin: 0!important; vertical-align: 0!important}
+.MathJax span {display: inline; position: static; border: 0; padding: 0; margin: 0; vertical-align: 0; line-height: normal; text-decoration: none}
+.MathJax nobr {white-space: nowrap!important}
+.MathJax img {display: inline!important; float: none!important}
+.MathJax * {transition: none; -webkit-transition: none; -moz-transition: none; -ms-transition: none; -o-transition: none}
+.MathJax_Processing {visibility: hidden; position: fixed; width: 0; height: 0; overflow: hidden}
+.MathJax_Processed {display: none!important}
+.MathJax_ExBox {display: block!important; overflow: hidden; width: 1px; height: 60ex; min-height: 0; max-height: none}
+.MathJax .MathJax_EmBox {display: block!important; overflow: hidden; width: 1px; height: 60em; min-height: 0; max-height: none}
+.MathJax_LineBox {display: table!important}
+.MathJax_LineBox span {display: table-cell!important; width: 10000em!important; min-width: 0; max-width: none; padding: 0; border: 0; margin: 0}
+.MathJax .MathJax_HitBox {cursor: text; background: white; opacity: 0; filter: alpha(opacity=0)}
+.MathJax .MathJax_HitBox * {filter: none; opacity: 1; background: transparent}
+#MathJax_Tooltip * {filter: none; opacity: 1; background: transparent}
+@font-face {font-family: MathJax_Blank; src: url('about:blank')}
+.MathJax .noError {vertical-align: ; font-size: 90%; text-align: left; color: black; padding: 1px 3px; border: 1px solid}
+</style></head>
+    <body><div style="visibility: hidden; overflow: hidden; position: absolute; top: 0px; height: 1px; width: auto; padding: 0px; border: 0px; margin: 0px; text-align: left; text-indent: 0px; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal;"><div id="MathJax_Hidden"></div></div><div id="MathJax_Message" style="display: none;"></div>
+
+        <div class="reveal none center ready" role="application" data-transition-speed="default" data-background-transition="default">
+            <div class="slides" style="width: 960px; height: 700px; left: 50%; top: 50%; bottom: auto; right: auto; transform: translate(-50%, -50%) scale(0.939429);"><section data-markdown="" data-markdown-parsed="true" class="present" style="top: 210.5px; display: block;"><p><span style="font-size: 97.5%; font-weight: lighter; transform: translateY(80%); display: block">язык программирования</span></p>
+<h1 id="javascript">JavaScript</h1>
+</section><section data-markdown="" data-markdown-parsed="true" hidden="" aria-hidden="true" class="future" style="top: 172px; display: block;"><h2 id="-4-">План на 4 лекции</h2>
+<ol>
+<li>Настройка окружения: VS Code, Node.js, git.</li>
+<li>Базовые понятия: синтаксис, типы данных.</li>
+<li>Особенности языка: функции, библиотека.</li>
+<li>Много живого кодинга.</li>
+</ol>
+</section><section data-markdown="" data-markdown-parsed="true" hidden="" aria-hidden="true" class="future" style="top: 118px; display: block;"><h2 id="-">Сегодня</h2>
+<ol>
+<li>История JavaScript</li>
+<li>В чём запускать код?</li>
+<li>Как выбрать текстовый редактор?</li>
+<li>Зачем нужна система контроля версий?</li>
+<li>Что нужно знать, чтобы сдать домашку?</li>
+<li>Демо.</li>
+</ol>
+</section><section data-markdown="" data-markdown-parsed="true" hidden="" aria-hidden="true" class="future" style="top: 350px; display: none;"><h2 id="-javascript">Краткая история JavaScript</h2>
+<ul>
+<li>1995 – Первая реализация</li>
+<li></li>
+<li></li>
+<li></li>
+<li></li>
+</ul>
+</section><section data-markdown="" data-markdown-parsed="true" data-type="showcase" hidden="" aria-hidden="true" class="future" style="top: 350px; display: none;"><!-- -->
+<p><img src="./slides_files/form-error.png" alt=""></p>
+</section><section data-markdown="" data-markdown-parsed="true" hidden="" aria-hidden="true" class="future" style="top: 350px; display: none;"><h2 id="-javascript">Краткая история JavaScript</h2>
+<ul>
+<li>1995 – Первая реализация</li>
+<li>1998 – Ajax</li>
+<li></li>
+<li></li>
+<li></li>
+</ul>
+</section><section data-markdown="" data-markdown-parsed="true" data-type="showcase" hidden="" aria-hidden="true" class="future" style="top: 350px; display: none;"><!-- -->
+<p><img src="./slides_files/ajax2.jpg" style="transform: scale(1.7)"></p>
+</section><section data-markdown="" data-markdown-parsed="true" hidden="" aria-hidden="true" class="future" style="top: 350px; display: none;"><h2 id="ajax">AJAX</h2>
+<p>Позволяет обновить часть страницы, не&nbsp;перезагружая её целиком.</p>
+</section><section data-markdown="" data-markdown-parsed="true" hidden="" aria-hidden="true" class="future" style="top: 350px; display: none;"><h2 id="-javascript">Краткая история JavaScript</h2>
+<ul>
+<li>1995 – Первая реализация</li>
+<li>1998 – Ajax</li>
+<li>2006 – jQuery</li>
+<li></li>
+<li></li>
+</ul>
+</section><section data-markdown="" data-markdown-parsed="true" hidden="" aria-hidden="true" class="future" style="top: 350px; display: none;"><p>JavaScript</p>
+<pre><code class="lang-js hljs javascript"><span class="hljs-built_in">document</span>
+  .getElementsByTagName(<span class="hljs-string">'header'</span>)[<span class="hljs-number">0</span>]
+</code></pre>
+<p>jQuery</p>
+<pre><code class="lang-js hljs javascript">$(<span class="hljs-string">'header'</span>)
+</code></pre>
+</section><section data-markdown="" data-markdown-parsed="true" hidden="" aria-hidden="true" class="future" style="top: 350px; display: none;"><h2 id="-javascript">Краткая история JavaScript</h2>
+<ul>
+<li>1995 – JavaScript</li>
+<li>1998 – Ajax</li>
+<li>2006 – jQuery</li>
+<li>2009 – Node.js</li>
+<li></li>
+</ul>
+</section><section data-markdown="" data-markdown-parsed="true" data-type="showcase" hidden="" aria-hidden="true" class="future" style="top: 350px; display: none;"><!-- -->
+<p><img src="./slides_files/isomorphic.png" alt=""></p>
+</section><section data-markdown="" data-markdown-parsed="true" hidden="" aria-hidden="true" class="future" style="top: 350px; display: none;"><h2 id="-javascript">Краткая история JavaScript</h2>
+<ul>
+<li>1995 – JavaScript</li>
+<li>1998 – Ajax</li>
+<li>2006 – jQuery</li>
+<li>2009 – Node.js</li>
+<li>2014 – Babel.js</li>
+</ul>
+</section><section data-markdown="" data-markdown-parsed="true" hidden="" aria-hidden="true" class="future" style="top: 350px; display: none;"><p>Разработчик пишет на современном языке</p>
+<pre><code class="lang-js hljs javascript"><span class="hljs-keyword">let</span> sum = (a, b = <span class="hljs-number">0</span>) =&gt; a + b;
+</code></pre>
+<p>В браузере выполянется совместимый код</p>
+<pre><code class="lang-js hljs javascript"><span class="hljs-keyword">var</span> sum = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">sum</span>(<span class="hljs-params">a</span>) </span>{
+  <span class="hljs-keyword">return</span> a + (
+    <span class="hljs-built_in">arguments</span>.length &gt; <span class="hljs-number">1</span> &amp;&amp; 
+    <span class="hljs-built_in">arguments</span>[<span class="hljs-number">1</span>] !== <span class="hljs-literal">undefined</span>
+  ) ? <span class="hljs-built_in">arguments</span>[<span class="hljs-number">1</span>] : <span class="hljs-number">0</span>; };
+</code></pre>
+</section><section data-markdown="" data-markdown-parsed="true" hidden="" aria-hidden="true" class="future" style="top: 350px; display: none;"><h2 id="-">Что нас ждёт дальше?</h2>
+<ul>
+<li>Progressive Web Apps</li>
+<li></li>
+</ul>
+</section><section data-markdown="" data-markdown-parsed="true" data-type="showcase" hidden="" aria-hidden="true" class="future" style="top: 350px; display: none;"><!-- -->
+<p><img src="./slides_files/pwa.png" alt=""></p>
+</section><section data-markdown="" data-markdown-parsed="true" hidden="" aria-hidden="true" class="future" style="top: 350px; display: none;"><h2 id="-">Что нас ждёт дальше?</h2>
+<ul>
+<li>Progressive Web Apps</li>
+<li>WebAssembly</li>
+</ul>
+</section><section data-markdown="" data-markdown-parsed="true" hidden="" aria-hidden="true" class="future" style="top: 350px; display: none;"><h2 id="webassembly-demo">WebAssembly Demo</h2>
+<p><a href="https://s3.amazonaws.com/mozilla-games/ZenGarden/EpicZenGarden.html">Epic Zen Garden</a> (Firefox)</p>
+</section><section data-markdown="" data-markdown-parsed="true" hidden="" aria-hidden="true" class="future" style="top: 350px; display: none;"><h2 id="-">Запуск кода</h2>
+<pre><code class="lang-js hljs javascript"><span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Hello world'</span>);
+</code></pre>
+</section><section data-markdown="" data-markdown-parsed="true" hidden="" aria-hidden="true" class="future" style="top: 350px; display: none;"><h2 id="-">Консоль браузера</h2>
+<ul>
+<li>Windows: <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>J</kbd></li>
+<li>MacOS: <kbd>⌘</kbd> + <kbd>⌥</kbd> + <kbd>J</kbd></li>
+</ul>
+<p><img src="./slides_files/console.png" alt=""></p>
+<p><a href="https://developers.google.com/web/tools/chrome-devtools/console/">Using the Console</a></p>
+</section><section data-markdown="" data-markdown-parsed="true" hidden="" aria-hidden="true" class="future" style="top: 350px; display: none;"><h2 id="-">Браузеры для разработчика</h2>
+<ul>
+<li><a href="https://www.google.com/chrome/browser/canary.html">Chrome Canary</a></li>
+<li><a href="https://www.mozilla.org/ru/firefox/channel/desktop/#nightly">Firefox Quantum</a></li>
+</ul>
+<p><img src="./slides_files/canary.png" style="width: 200px;">
+<img src="./slides_files/nightly.jpg" style="width: 200px;"></p>
+</section><section hidden="" aria-hidden="true" class="stack future" style="top: 350px; display: none;"><section data-markdown="" data-markdown-parsed="true" style="top: 350px; display: none;"><h2 id="node-js">Node.js</h2>
+<p><a href="https://nodejs.org/en/">nodejs.org</a></p>
+<pre><code class="lang-bash hljs">&gt; node --version
+v8.6.0
+</code></pre>
+</section><section data-markdown="" data-markdown-parsed="true" class="future" aria-hidden="true" style="top: 350px; display: none;"><h2 id="node-repl">Node REPL</h2>
+<p>В терминале набрать <code>node</code> и&nbsp;нажать&nbsp;<kbd>Enter</kbd></p>
+<pre><code class="lang-js hljs javascript">&gt; <span class="hljs-keyword">let</span> sum = <span class="hljs-number">1</span> + <span class="hljs-number">1</span>
+<span class="hljs-literal">undefined</span>
+&gt; sum
+<span class="hljs-number">2</span>
+</code></pre>
+<p>Выход – <kbd>Ctrl</kbd> + <kbd>D</kbd></p>
+</section></section><section data-markdown="" data-markdown-parsed="true" hidden="" aria-hidden="true" class="future" style="top: 350px; display: none;"><h2 id="-">Текстовый редактор</h2>
+<p>В нём вы проводите большую часть времени. Поэтому отнеситесь к выбору ответственно.</p>
+</section><section data-markdown="" data-markdown-parsed="true" hidden="" aria-hidden="true" class="future" style="top: 350px; display: none;"><h2 id="-">Как выбрать</h2>
+<ul>
+<li>поддержка используемых технологий</li>
+<li>скорость и производительность</li>
+<li>функциональность</li>
+<li>популярность</li>
+<li>цена</li>
+</ul>
+</section><section data-markdown="" data-markdown-parsed="true" hidden="" aria-hidden="true" class="future" style="top: 350px; display: none;"><h2 id="-">Варианты</h2>
+<ul>
+<li><a href="https://www.sublimetext.com/">Sublime Text</a></li>
+<li><a href="https://www.jetbrains.com/webstorm/">WebStorm / IDEA</a></li>
+<li><a href="https://code.visualstudio.com/">Visual Studio Code</a></li>
+<li><a href="https://atom.io/">Atom</a></li>
+<li><a href="http://brackets.io/">Brackets</a></li>
+</ul>
+</section><section data-markdown="" data-markdown-parsed="true" hidden="" aria-hidden="true" class="future" style="top: 350px; display: none;"><h2 id="visual-studio-code">Visual Studio Code</h2>
+<p>Рекомендованный редактор для&nbsp;прохождения&nbsp;курса.</p>
+<ul>
+<li>мощная поддержка языка</li>
+<li>инструменты для работы с git</li>
+<li>встроенный терминал</li>
+</ul>
+</section><section data-markdown="" data-markdown-parsed="true" hidden="" aria-hidden="true" class="future" style="top: 350px; display: none;"><h2 id="-">Демо</h2>
+<p>Пишем чат-бота. Как в Телеграме, только для терминала. И очень простенького.</p>
+<pre><code class="lang-bash hljs">&gt; node bot.js hello world
+hello world
+</code></pre>
+</section><section data-markdown="" data-markdown-parsed="true" hidden="" aria-hidden="true" class="future" style="top: 350px; display: none;"><h2 id="git">git</h2>
+<p>– система контроля версий.</p>
+<p>В целом, нужна для двух вещей: версионирования кода и совместной разработки.</p>
+<p><a href="https://git-scm.com/">git-scm.org</a></p>
+</section><section data-markdown="" data-markdown-parsed="true" hidden="" aria-hidden="true" class="future" style="top: 350px; display: none;"><h2 id="github">GitHub</h2>
+<p>– графический интерфейс для git.</p>
+<p>Есть и другая версия: это социальная сеть для&nbsp;программистов.</p>
+<p><a href="https://github.com/">github.com</a></p>
+</section><section data-markdown="" data-markdown-parsed="true" hidden="" aria-hidden="true" class="future" style="top: 350px; display: none;"><h2 id="-git-github">Ссылки про git/GitHub</h2>
+<ul>
+<li><a href="https://urfu-2016.github.io/javascript-slides/01-intro/#/37">Введение. Основы языка. GitHub</a> <br><small>Язык программирования Javascript 2016</small></li>
+<li><a href="https://gebetix.github.io/git/">git</a><br><small>Разработка веб-приложений 2016</small></li>
+<li>Github (<a href="http://urfu-2015.github.io/webdev-slides/1-1-teamwork-git-github/#/">слайды</a>, <a href="https://www.youtube.com/watch?v=mvVsrB46zkc">видео</a>) <br><small>Разработка веб-приложений 2015</small></li>
+</ul>
+</section><section hidden="" aria-hidden="true" class="stack future" style="top: 350px; display: none;"><section data-markdown="" data-markdown-parsed="true" style="top: 350px; display: none;"><h2 id="-">Демо</h2>
+<p>Отправляем пулл-реквест с домашкой.</p>
+<p><a href="https://github.com/urfu-2017/demo-task-1">Задача «Сложить два числа»</a></p>
+</section><section data-markdown="" data-markdown-parsed="true" class="future" aria-hidden="true" style="top: 350px; display: none;"><h2 id="-">Перед началом работы</h2>
+<p>клонируем репозиторий<br>и устанавливаем зависимости.</p>
+<pre><code class="lang-bash hljs">git <span class="hljs-built_in">clone</span> https://github.com/urfu-...
+
+<span class="hljs-built_in">cd</span> demo-task-1
+
+npm install
+</code></pre>
+</section><section data-markdown="" data-markdown-parsed="true" class="future" aria-hidden="true" style="top: 350px; display: none;"><h2 id="-">Перед отправкой домашки</h2>
+<p>запускаем линтер и тесты.</p>
+<pre><code class="hljs stata">npm <span class="hljs-keyword">run</span> lint
+
+npm <span class="hljs-keyword">run</span> <span class="hljs-keyword">test</span>
+</code></pre></section><section data-markdown="" data-markdown-parsed="true" class="future" aria-hidden="true" style="top: 350px; display: none;"><h2 id="-">После прохождения проверок</h2>
+<p>создаём коммит в VS Code<br>и отправляем его на гитхаб.</p>
+<pre><code class="lang-bash hljs">git push
+</code></pre>
+</section></section><section data-markdown="" data-markdown-parsed="true" hidden="" aria-hidden="true" class="future" style="top: 350px; display: none;"><h2 id="-">Материалы к курсу</h2>
+<ul>
+<li><a href="https://developer.mozilla.org/ru/">MDN Web Docs</a></li>
+<li><a href="http://speakingjs.com/es5/index.html">Speaking JavaScript</a></li>
+<li><a href="http://exploringjs.com/es6/">Exploring ES6</a></li>
+</ul>
+<p><img style="height: 50vh;" src="./slides_files/speakingjs.jpg">
+<img style="height: 50vh; margin-left: 1em;w" src="./slides_files/exploringes6.jpg"></p>
+</section><section data-markdown="" data-markdown-parsed="true" hidden="" aria-hidden="true" class="future" style="top: 350px; display: none;"><h2 id="-">Материалы к домашке</h2>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=JxAXlJEmNMg">JavaScript - Volume 1: The Early Years</a><br><small>Youtube</small></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/First_steps/Useful_string_methods">Useful string methods</a><br><small>MDN</small></li>
+<li><a href="http://speakingjs.com/es5/ch07.html#_an_overview_of_the_syntax_2">An Overview of the Syntax</a></li>
+<li><a href="http://speakingjs.com/es5/ch07.html#_control_flow_statements_and_blocks">Control Flow Statements and Blocks</a></li>
+</ul>
+</section><section data-markdown="" data-markdown-parsed="true" hidden="" aria-hidden="true" class="future" style="top: 350px; display: none;"><h1 id="-">Конец</h1>
+</section></div>
+        <div class="backgrounds"><div class="slide-background present" data-loaded="true" style="display: block;"></div><div class="slide-background future" data-loaded="true" style="display: block;"></div><div class="slide-background future" data-loaded="true" style="display: block;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background stack future" style="display: none;"><div class="slide-background present" style="display: none;"></div><div class="slide-background future" style="display: none;"></div></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background stack future" style="display: none;"><div class="slide-background present" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div></div><div class="progress" style="display: block;"><span style="width: 0px;"></span></div><aside class="controls" style="display: block;"><button class="navigate-left" aria-label="previous slide" disabled="disabled"></button><button class="navigate-right enabled" aria-label="next slide"></button><button class="navigate-up" aria-label="above slide" disabled="disabled"></button><button class="navigate-down" aria-label="below slide" disabled="disabled"></button></aside><div class="slide-number" style="display: block;"><span class="slide-number-a">1</span></div><div class="speaker-notes" data-prevent-swipe="" tabindex="0"></div><div class="pause-overlay"></div><div id="aria-status-div" aria-live="polite" aria-atomic="true" style="position: absolute; height: 1px; width: 1px; overflow: hidden; clip: rect(1px 1px 1px 1px);">язык программирования
+JavaScript
+</div></div>
+
+        <script src="./slides_files/head.min.js"></script>
+        <script src="./slides_files/reveal.js"></script>
+
+        <script>
+            function extend() {
+              var target = {};
+              for (var i = 0; i < arguments.length; i++) {
+                var source = arguments[i];
+                for (var key in source) {
+                  if (source.hasOwnProperty(key)) {
+                    target[key] = source[key];
+                  }
+                }
+              }
+              return target;
+            }
+            // Optional libraries used to extend on reveal.js
+            var deps = [
+              { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+              { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector('[data-markdown]'); } },
+              { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector('[data-markdown]'); } },
+              { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+              { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
+              { src: 'plugin/math/math.js', async: true }
+            ];
+            // default options to init reveal.js
+            var defaultOptions = {
+              controls: true,
+              progress: true,
+              history: true,
+              center: true,
+              transition: 'default',
+              dependencies: deps
+            };
+            // options from URL query string
+            var queryOptions = Reveal.getQueryHash() || {};
+            var options = {
+  "notesSeparator": "note:",
+  "separator": "^[\r\n?|\n]---[\r\n?|\n]$",
+  "verticalSeparator": "^[\r\n?|\n]--[\r\n?|\n]$",
+  "theme": "white",
+  "highlightTheme": "github",
+  "controls": true,
+  "progress": true,
+  "slideNumber": true,
+  "history": true,
+  "keyboard": true,
+  "overview": true,
+  "center": true,
+  "touch": true,
+  "loop": false,
+  "rtl": false,
+  "shuffle": false,
+  "fragments": true,
+  "embedded": false,
+  "help": true,
+  "showNotes": false,
+  "autoSlide": 0,
+  "autoSlideStoppable": true,
+  "mouseWheel": false,
+  "hideAddressBar": true,
+  "previewLinks": false,
+  "transition": "none",
+  "transitionSpeed": "default",
+  "backgroundTransition": "default",
+  "viewDistance": 3,
+  "parallaxBackgroundImage": "",
+  "parallaxBackgroundSize": "",
+  "parallaxBackgroundHorizontal": null,
+  "parallaxBackgroundVertical": null,
+  "customTheme": "yandex",
+  "__content": "\n\n<span style=\"font-size: 97.5%; font-weight: lighter; transform: translateY(80%); display: block\">язык программирования</span>\n\n# JavaScript\n\n---\n\n## План на 4 лекции\n\n1. Настройка окружения: VS Code, Node.js, git.\n1. Базовые понятия: синтаксис, типы данных.\n1. Особенности языка: функции, библиотека.\n1. Много живого кодинга.\n\n---\n\n## Сегодня\n\n1. История JavaScript\n1. В чём запускать код?\n1. Как выбрать текстовый редактор?\n1. Зачем нужна система контроля версий?\n1. Что нужно знать, чтобы сдать домашку?\n1. Демо.\n\n---\n\n##  Краткая история JavaScript\n\n- 1995 – Первая реализация\n- \n- \n- \n- \n\n---\n\n<!-- .slide: data-type=\"showcase\" -->\n\n![](img/form-error.png)\n\n---\n\n##  Краткая история JavaScript\n\n- 1995 – Первая реализация\n- 1998 – Ajax\n- \n- \n- \n\n---\n\n<!-- .slide: data-type=\"showcase\" -->\n\n<img src=\"img/ajax2.jpg\" style=\"transform: scale(1.7)\"/>\n\n---\n\n## AJAX\n\nПозволяет обновить часть страницы, не&nbsp;перезагружая её целиком.\n\n---\n\n## Краткая история JavaScript\n\n- 1995 – Первая реализация\n- 1998 – Ajax\n- 2006 – jQuery\n- \n- \n\n---\n\nJavaScript\n\n```js\ndocument\n  .getElementsByTagName('header')[0]\n```\n\njQuery\n\n```js\n$('header')\n```\n\n---\n\n## Краткая история JavaScript\n\n- 1995 – JavaScript\n- 1998 – Ajax\n- 2006 – jQuery\n- 2009 – Node.js\n- \n\n---\n\n<!-- .slide: data-type=\"showcase\" -->\n\n![](img/isomorphic.png)\n\n---\n\n## Краткая история JavaScript\n\n- 1995 – JavaScript\n- 1998 – Ajax\n- 2006 – jQuery\n- 2009 – Node.js\n- 2014 – Babel.js\n\n---\n\nРазработчик пишет на современном языке\n\n```js\nlet sum = (a, b = 0) => a + b;\n```\n\nВ браузере выполянется совместимый код\n\n```js\nvar sum = function sum(a) {\n  return a + (\n    arguments.length > 1 && \n    arguments[1] !== undefined\n  ) ? arguments[1] : 0; };\n```\n\n---\n\n## Что нас ждёт дальше?\n\n- Progressive Web Apps\n- \n\n---\n\n<!-- .slide: data-type=\"showcase\" -->\n\n![](img/pwa.png)\n\n---\n\n## Что нас ждёт дальше?\n\n- Progressive Web Apps\n- WebAssembly\n\n---\n\n## WebAssembly Demo\n\n[Epic Zen Garden](https://s3.amazonaws.com/mozilla-games/ZenGarden/EpicZenGarden.html) (Firefox)\n\n---\n\n## Запуск кода\n\n```js\nconsole.log('Hello world');\n```\n\n---\n\n## Консоль браузера\n\n- Windows: <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>J</kbd>\n- MacOS: <kbd>⌘</kbd> + <kbd>⌥</kbd> + <kbd>J</kbd>\n\n![](img/console.png)\n\n[Using the Console](https://developers.google.com/web/tools/chrome-devtools/console/)\n\n---\n\n## Браузеры для разработчика\n\n- [Chrome Canary](https://www.google.com/chrome/browser/canary.html)\n- [Firefox Quantum](https://www.mozilla.org/ru/firefox/channel/desktop/#nightly)\n\n<img src=\"img/canary.png\" style=\"width: 200px;\">\n<img src=\"img/nightly.jpg\" style=\"width: 200px;\">\n\n---\n\n## Node.js\n\n[nodejs.org](https://nodejs.org/en/)\n\n```bash\n> node --version\nv8.6.0\n```\n\n--\n\n## Node REPL\n\nВ терминале набрать `node` и&nbsp;нажать&nbsp;<kbd>Enter</kbd>\n\n```js\n> let sum = 1 + 1\nundefined\n> sum\n2\n```\n\nВыход – <kbd>Ctrl</kbd> + <kbd>D</kbd>\n\n---\n\n## Текстовый редактор\n\nВ нём вы проводите большую часть времени. Поэтому отнеситесь к выбору ответственно.\n\n---\n\n## Как выбрать\n\n- поддержка используемых технологий\n- скорость и производительность\n- функциональность\n- популярность\n- цена\n\n---\n\n## Варианты\n\n- [Sublime Text](https://www.sublimetext.com/)\n- [WebStorm / IDEA](https://www.jetbrains.com/webstorm/)\n- [Visual Studio Code](https://code.visualstudio.com/)\n- [Atom](https://atom.io/)\n- [Brackets](http://brackets.io/)\n\n---\n\n## Visual Studio Code\n\nРекомендованный редактор для&nbsp;прохождения&nbsp;курса.\n\n- мощная поддержка языка\n- инструменты для работы с git\n- встроенный терминал\n\n---\n\n## Демо\n\nПишем чат-бота. Как в Телеграме, только для терминала. И очень простенького.\n\n```bash\n> node bot.js hello world\nhello world\n```\n\n---\n\n## git\n\n– система контроля версий.\n\nВ целом, нужна для двух вещей: версионирования кода и совместной разработки.\n\n[git-scm.org](https://git-scm.com/)\n\n---\n\n## GitHub\n\n– графический интерфейс для git.\n\nЕсть и другая версия: это социальная сеть для&nbsp;программистов.\n\n[github.com](https://github.com/)\n\n---\n\n## Ссылки про git/GitHub\n\n- [Введение. Основы языка. GitHub](https://urfu-2016.github.io/javascript-slides/01-intro/#/37) <br><small>Язык программирования Javascript 2016</small>\n- [git](https://gebetix.github.io/git/)<br><small>Разработка веб-приложений 2016</small>\n- Github ([слайды](http://urfu-2015.github.io/webdev-slides/1-1-teamwork-git-github/#/), [видео](https://www.youtube.com/watch?v=mvVsrB46zkc)) <br><small>Разработка веб-приложений 2015</small>\n\n---\n\n## Демо\n\nОтправляем пулл-реквест с домашкой.\n\n[Задача «Сложить два числа»](https://github.com/urfu-2017/demo-task-1)\n\n--\n\n## Перед началом работы\n\nклонируем репозиторий<br>и устанавливаем зависимости.\n\n```bash\ngit clone https://github.com/urfu-...\n\ncd demo-task-1\n\nnpm install\n```\n\n--\n\n## Перед отправкой домашки\n\nзапускаем линтер и тесты.\n\n```\nnpm run lint\n\nnpm run test\n```\n\n--\n\n## После прохождения проверок\n\nсоздаём коммит в VS Code<br>и отправляем его на гитхаб.\n\n```bash\ngit push\n```\n\n---\n\n##  Материалы к курсу\n\n- [MDN Web Docs](https://developer.mozilla.org/ru/)\n- [Speaking JavaScript](http://speakingjs.com/es5/index.html)\n- [Exploring ES6](http://exploringjs.com/es6/)\n\n<img style=\"height: 50vh;\" src=\"img/speakingjs.jpg\">\n<img style=\"height: 50vh; margin-left: 1em;w\" src=\"img/exploringes6.jpg\">\n\n---\n\n## Материалы к домашке\n\n- [JavaScript - Volume 1: The Early Years](https://www.youtube.com/watch?v=JxAXlJEmNMg)<br><small>Youtube</small>\n- [Useful string methods](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/First_steps/Useful_string_methods)<br><small>MDN</small>\n- [An Overview of the Syntax](http://speakingjs.com/es5/ch07.html#_an_overview_of_the_syntax_2)\n- [Control Flow Statements and Blocks](http://speakingjs.com/es5/ch07.html#_control_flow_statements_and_blocks)\n\n---\n\n# Конец\n"
+};
+            options = extend(defaultOptions, options, queryOptions);
+            Reveal.initialize(options);
+        </script>
+        
+    
+<div style="position: absolute; width: 0px; height: 0px; overflow: hidden; padding: 0px; border: 0px; margin: 0px;"><div id="MathJax_Font_Test" style="position: absolute; visibility: hidden; top: 0px; left: 0px; width: auto; padding: 0px; border: 0px; margin: 0px; white-space: nowrap; text-align: left; text-indent: 0px; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; font-size: 40px; font-weight: normal; font-style: normal; font-family: STIXSizeOneSym, sans-serif;"></div></div></body></html>
