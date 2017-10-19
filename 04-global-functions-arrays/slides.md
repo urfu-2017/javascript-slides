@@ -759,7 +759,7 @@ let chars = ['a', 'b', 'c'];
 
 chars.slice(0, 1); // ['a']
 chars.slice(1, -1); // ['b']
-chars.slcie(-2); // ['b', 'c']
+chars.slice(-2); // ['b', 'c']
 chars.slice(); // ['a', 'b', 'c']
 ```
 
