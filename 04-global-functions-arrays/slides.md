@@ -928,6 +928,7 @@ let set = new Set(['hello', 'world', 'hello']);
 let arr = [...set];
 console.log(arr); // ['hello', 'world']
 ```
+
 --
 
 #### Map
