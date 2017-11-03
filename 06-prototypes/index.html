@@ -165,8 +165,10 @@
         sleep() {},
         <strong class="grey">[[Prototype]]: &lt;ссылка на person&gt;</strong>
     };
-
-    student.getName(); // Billy
+    </code></pre>
+    <pre><code data-trim data-noescape>
+    student.getName();
+    // Billy
     </code></pre>
 </section>
 
@@ -196,8 +198,10 @@
         sleep() {},
         <strong class="grey">[[Prototype]]: &lt;ссылка на person&gt;</strong>
     };
-
-    student.getName(); // Billy
+    </code></pre>
+    <pre><code data-trim data-noescape>
+    student.getName();
+    // Billy
     </code></pre>
 </section>
 
@@ -320,24 +324,16 @@
 <section>
     <h2>Когда поиск остановится?</h2>
     <pre class="javascript"><code data-trim data-noescape>
-        Object.prototype  = {
-            <strong class="grey">[[Prototype]]: null</strong>
-        };
+        Object.prototype = { <strong class="grey">[[Prototype]]: null</strong> };
     </code></pre>
     <pre><code data-trim data-noescape>
-        const creature = {
-            <strong class="grey">[[Prototype]]: &lt;Object.prototype&gt;</strong>
-        };
+        const creature = { <strong class="grey">[[Prototype]]: &lt;Object.prototype&gt;</strong> };
     </code></pre>
     <pre><code data-trim data-noescape>
-        const person = {
-            <strong class="grey">[[Prototype]]: &lt;сreature&gt;</strong>
-        };
+        const person = { <strong class="grey">[[Prototype]]: &lt;сreature&gt;</strong> };
     </code></pre>
     <pre><code data-trim data-noescape>
-        const student = {
-            <strong class="grey">[[Prototype]]: &lt;person&gt;</strong>
-        };
+        const student = { <strong class="grey">[[Prototype]]: &lt;person&gt;</strong> };
     </code></pre>
     <pre class="javascript"><code data-trim data-noescape>
         student.getName(); <span class="red fragment" data-fragment-index=1>TypeError: student.getName is not a function</span>
@@ -401,7 +397,7 @@
     Object.setPrototypeOf(student, null);
     </code></pre>
     <pre class="fragment javascript" data-fragment-index=2><code data-trim data-noescape>
-    Object.setPrototypeOf(student, 42);
+    Object.setPrototypeOf(student, 42); <span class="red fragment" data-fragment-index=2>Error</span>
     <span class="red"></span>
     </code></pre>
     <p class="red fragment" data-fragment-index=2>TypeError: Object prototype may only be an Object or null</p>
@@ -451,17 +447,6 @@
     </code></pre>
 </section>
 
-<section>
-    <h2 class="fragment" data-fragment-index=1>Словари</h2>
-    <pre class="javascript"><code data-trim>
-    const coords = Object.create(null, {
-        x: { value: 42 },
-        y: { value: 1703 }
-    });
-    </code></pre>
-    <p class="fragment" data-fragment-index=1>Производительность и предсказуемость</p>
-</section>
-
 <section class="center">
     <p><strong>create</strong> быстрее, чем <strong>setPrototypeOf</strong></p>
 </section>
@@ -492,20 +477,31 @@
     <p><strong>super</strong> ссылается на прототип объекта<br> из поля <strong class="grey">[[HomeObject]]</strong></p>
 </section>
 
+<section>
+    <h2>В виде псевдокода</h2>
+    <pre><code data-trim data-noescape>
+        student.getName.<strong class="grey">[[HomeObject]]</strong> == student;
+
+        super == Object.getPrototypeOf(student.getName.<strong class="grey">[[HomeObject]]</strong>);
+    </code></pre>
+</section>
+
 <section class="center">
     <p>У обычных полей-функций<br>  <strong class="grey">[[HomeObject]]</strong> не заполняется</p>
 </section>
 
 <section>
     <h2>super</h2>
-    <pre><code data-trim>
+    <pre><code data-trim data-noescape>
     const person = {
         getName() { return this.name; }
     };
 
     const student = {
         name: 'Billy',
-        getName: function() { return 'Student ' + super.getName(); }
+        getName: function() {
+            return 'Student ' + super.getName(); <span class="red">Error</span>
+        }
     };
     </code></pre>
     <p class="red">SyntaxError: 'super' outside of function or class </p>
@@ -519,21 +515,25 @@
     <h2>super</h2>
     <pre><code data-trim>
     const person = {
-        getName() { return 'Mr ' + this.name; }
+        getName() { return 'and person ' + this.name; }
     };
 
     const student = {
         name: 'Billy',
-        getName: function() { return 'Student ' + super.getName(); }
+        getName() { return 'Student ' + super.getName(); }
     };
 
     Object.setPrototypeOf(student, person)
 
-    const getName = student.getName;
+    const getName = student.getName; // this потеряли, но не super
 
-    getName(); // Student Mr
+    getName(); // Student and person
 
     </code></pre>
+</section>
+
+<section class="center">
+    <p><strong>super</strong> навсегда привязывается к объекту,<br> в отличии от <strong>this</strong></p>
 </section>
 
 <section class="center">
@@ -546,9 +546,8 @@
     const student = {
         name: 'Billy'
     };
-
     </code></pre>
-    <pre class="fragment javascript"><code>
+    <pre class="fragment javascript"><code data-trim>
 student.age = 21;
 
 student['age'] = 21;
@@ -562,11 +561,11 @@ student['age'] = 21;
 
 <section>
     <h2>Установка полей объекта cо свойствами</span></h2>
-    <pre><code data-trim>
+    <pre class="javascript"><code data-trim>
     const student = {};
 
     Object.defineProperty(student, 'name', {
-        writeable: false, // по умолчанию
+        writeable: false, // Можно не указывать, по умолчанию false
         value: 'Billy'
     });
 
@@ -607,14 +606,13 @@ student['age'] = 21;
 
     student.planet = 'Mars';
     </code></pre>
-    <pre><code data-trim></code></pre>
     <pre class="fragment"><code data-trim>
     console.info(student.planet); // Mars
     </code></pre>
-    <pre><code data-trim></code></pre>
     <pre class="fragment"><code data-trim>
     console.info(person.planet); // Earth
     </code></pre>
+    <p class="fragment red">Работает не всегда!</p>
 </section>
 
 <section>
@@ -628,7 +626,6 @@ student['age'] = 21;
         name: 'Billy'
     };
     </code></pre>
-    <pre><code data-trim></code></pre>
     <pre class="javascript fragment"><code data-trim>
     console.info('Hello, ' + student); // Hello, [object Object]
     </code></pre>
@@ -662,7 +659,6 @@ student['age'] = 21;
         value: 'Billy'
     });
     </code></pre>
-    <pre><code data-trim></code></pre>
     <pre class="javascript fragment"><code data-trim>
     student.name = 'Willy';
 
@@ -817,7 +813,7 @@ student['age'] = 21;
     const student = { name: 'Billy' };
 
     Object.defineProperty(student, 'age', {
-        enumerable: false, // Можно не указывать, по умолчанию false
+        enumerable: false,
         value: 21
     });
 
@@ -880,10 +876,10 @@ student['age'] = 21;
 <section>
     <h2>set/get</h2>
     <pre><code data-trim>
-    let name = null;
+    let name = null; // Не будет доступна снаружи модуля
 
     const student = {
-        get name() { return 'Mr ' + name; }
+        get name() { return 'Student ' + name; }
 
         set name(value) {
             name = value;
@@ -901,7 +897,7 @@ student['age'] = 21;
 
     student.name = 'Billy';
 
-    console.info(student.name); // Mr Billy;
+    console.info(student.name); //Student Billy;
     </code></pre>
 </section>
 
@@ -931,14 +927,14 @@ student['age'] = 21;
     let name = null;
 
     const student = {
-        name: 1,
-        get name() { return 'Mr ' + name; },
+        name: 'Willy',
+        get name() { return 'Student ' + name; },
         set name(value) { name = value;}
     };
 
     student.name = 'Billy'
 
-    console.info(student.name); // Mr Billy
+    console.info(student.name); // Student Billy
     </code></pre>
 </section>
 
@@ -948,24 +944,8 @@ student['age'] = 21;
     let name = null;
 
     const student = {
-        get name() { return 'Mr ' + name; },
-        name: 1, // get становится undefined
-        set name(value) { name = value;}
-    };
-
-    student.name = 'Billy'
-
-    console.info(student.name); // undefined
-    </code></pre>
-</section>
-
-<section>
-    <h2>set/get</h2>
-    <pre><code data-trim>
-    let name = null;
-
-    const student = {
-        name: 1, // get становится undefined
+        get name() { return 'Student ' + name; },
+        name: 'Willy', // get становится undefined
         set name(value) { name = value;}
     };
 
@@ -981,22 +961,46 @@ student['age'] = 21;
     let name = null;
 
     const student = {
-        get name() { return 'Mr ' + name; }
+        name: 'Willy', // get становится undefined
+        set name(value) { name = value;}
     };
 
     student.name = 'Billy'
 
-    console.info(student.name); // Mr null
+    console.info(student.name); // undefined
     </code></pre>
 </section>
 
 <section>
-    <h2>Нормальные поля и ассесоры</h2>
+    <h2>set/get</h2>
     <pre><code data-trim>
     let name = null;
 
     const student = {
-        get name() { return 'Mr ' + name; },
+        get name() { return 'Student ' + name; }
+    };
+
+    student.name = 'Billy'
+
+    console.info(student.name); // Student null
+    </code></pre>
+</section>
+
+<section class="center">
+    <p>Поле одновременно может быть либо <strong>нормальным</strong> либо <strong>геттером/сеттером</strong></p>
+</section>
+
+<section class="center">
+    <p>Если есть хотя бы один из методов <strong>get</strong> или <strong>set</strong>, то поле становится <strong>геттером/сеттером</strong></p>
+</section>
+
+<section>
+    <h2>Геттеры/сеттеры</h2>
+    <pre><code data-trim>
+    let name = null;
+
+    const student = {
+        get name() { return 'Student ' + name; },
         set name(value) { name = value;}
     };
 
@@ -1011,10 +1015,8 @@ student['age'] = 21;
 </section>
 
 <section>
-    <h2>Нормальные поля и ассесоры</h2>
+    <h2>Нормальные поля</h2>
     <pre class="javascript"><code data-trim>
-    let name = null;
-
     const student = {
         name: 'Billy'
     };
@@ -1030,10 +1032,8 @@ student['age'] = 21;
 </section>
 
 <section>
-    <h2>Нормальные поля и ассесоры</h2>
+    <h2>Нормальные поля</h2>
     <pre class="javascript"><code data-trim>
-    let name = null;
-
     Object.defineProperty(student, 'name', {
         value: 'Billy'
     });
