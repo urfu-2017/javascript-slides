@@ -37,7 +37,7 @@
     color: #d36363;
 }
 
-/* Agate highlightjs theme */
+/* Modified Agate highlightjs theme */
 .black .hljs
 {
     display: block;
@@ -78,13 +78,12 @@
     color: #a2fca2;
 }
 
+.black .hljs-attr,
 .black .hljs-type,
 .black .hljs-title,
 .black .hljs-section,
 .black .hljs-attribute,
-.black .hljs-quote,
-.black .hljs-built_in,
-.black .hljs-builtin-name
+.black .hljs-quote
 {
     color: #ffa;
 }
