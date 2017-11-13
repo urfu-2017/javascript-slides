@@ -30,7 +30,8 @@
 }
 
 .white h2 strong,
-.white p strong
+.white p strong,
+.white li strong
 {
     color: #a71d5d;
 }
@@ -45,6 +46,12 @@
 .white .reveal .slides .red *
 {
     color: #d36363;
+}
+
+.white .reveal .slides .green,
+.white .reveal .slides .green *
+{
+    color: #63a35c;
 }
 
 /* Modified Github highlightjs theme */
