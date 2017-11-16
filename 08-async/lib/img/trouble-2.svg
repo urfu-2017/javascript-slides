@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="471px" height="155px" viewBox="0 0 471 155" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 47.1 (45422) - http://www.bohemiancoding.com/sketch -->
+    <title>trouble-2</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="130" height="35"></rect>
+        <rect id="path-2" x="0" y="0" width="130" height="35"></rect>
+        <rect id="path-3" x="0" y="0" width="129" height="35"></rect>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="trouble-2">
+            <text id="time" fill="#000000" font-family="Helvetica" font-size="28" font-weight="normal">
+                <tspan x="419.5" y="147">time</tspan>
+            </text>
+            <path d="M0.5,93.5 L448.53,93.5" id="Shape" stroke="#000000" stroke-width="4"></path>
+            <polygon id="Shape" stroke="#000000" stroke-width="4" fill="#E6E6E6" fill-rule="nonzero" points="456.03 93.5 446.03 98.5 448.53 93.5 446.03 88.5"></polygon>
+            <path d="M256.25,96.25 L326.25,95.75" id="Shape" stroke="#000000" stroke-width="2" transform="translate(291.250000, 96.000000) rotate(90.000000) translate(-291.250000, -96.000000) "></path>
+            <path d="M125.5,96 L195.5,96" id="Shape" stroke="#000000" stroke-width="2" transform="translate(160.500000, 96.000000) rotate(90.000000) translate(-160.500000, -96.000000) "></path>
+            <path d="M-4.5,96 L65.5,96" id="Shape" stroke="#000000" stroke-width="2" transform="translate(30.500000, 96.000000) rotate(90.000000) translate(-30.500000, -96.000000) "></path>
+            <text id="300" font-family="ArialMT, Arial" font-size="15" font-weight="normal" fill="#000000">
+                <tspan x="279" y="154">300</tspan>
+            </text>
+            <g id="func" transform="translate(292.000000, 76.000000)">
+                <g id="Rectangle">
+                    <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-1"></use>
+                    <rect stroke="#EA0000" stroke-width="1" x="0.5" y="0.5" width="129" height="34"></rect>
+                </g>
+                <text id="hardWork()" font-family="ArialMT, Arial" font-size="15" font-weight="normal" fill="#000000">
+                    <tspan x="28" y="23">hardWork()</tspan>
+                </text>
+            </g>
+            <image id="light" x="287" y="0" width="32" height="48" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAwCAYAAABwrHhvAAAABGdBTUEAA1teXP8meAAAAuFJREFUWAnFlz1rFVEQhucmEsFg4WejRUSMkB8gqIWkEoWktIgSFO0l/yASVESwsRWsrC1srANqY2NhExJBQYJfQbAwipo8s3fX7O49Z+fs2Xv3Dixn98yced95z9e9HQm0LyJzWyJPAsOdYR2R5UMi5/LOkfyH8X7D8JtuCCyVg+iz7bvI8d8iq3ZkZcQrqj8LIELuWJACf0Su7QyJflsqg2smUwHojn4VeU97JBYakNcHRU65COyykrL4zhMTDZ7md1avvpApuJ4miW3eUP0z3+BKAj9EDiPbrG9wSP8oK98lfTa2ksCmyDxzb05TlqzcAvx2v8jTcn/+20sAYMZLU/lvk+RfHrD8riBO+yZy5q/IC6czoJPEK8z9FC1p/FalQKPqAdbqK8GVFjG9xtbbyxSs4xnv9Qb1vOPUO0lyzrBqcyoA+CWGxYIr4p0QcA10KvBZ5CW+0xpQ10j4gbk/Qcv1YVuPAiy+KYZFgadwd0PBNb6HAHsmevEB/JHqH6dEgpoCAeZ+jGc+aKQjCAL3eH45XN6uAoENkRkiKSLKPh0QeVR3ZIFAQ/nvU/3PugQY0zUW31EI6L1fIJX5B9ECfuv/RcORdRWQVsE5rBYTBbRqTr81CEzwDNy0cgVXoKRi5J/mfUI7Bm15cMVKCKBA9N6vQ7gMrmM7/OTex5mpF8/uOsnqxrrANccI19Vl2qGAJwSa7H1NYJmv8mwcftvYIQuskwd2ZDHCAtfooH0P+IViavsrBFyzmAoAPs4/ow3aMRu2GxEKrtGmAoBPDwo8iEAd+etU3tXKUABwnaKg+Y8BNxVA/kmCjmVsfW0suEmAALP6JuAmAWv+m4L7FE36Ad/Dz/NNni3Xw+G0WJkg0Ondhrr9yOG8I/pZuZeAT/5+gntF0u2H7Gtl6fsluxc4cwA0OTRwJQH4zTyB1irPFAD8eUagdfD89msdPJX/olY/FPCUwMOhgSsBDqAr2rZl27UQv7R+LafiAAAAAElFTkSuQmCC"></image>
+            <rect id="Rectangle" fill="#FF0000" x="241" y="91.5" width="49" height="4"></rect>
+            <text id="200" font-family="ArialMT, Arial" font-size="15" font-weight="normal" fill="#000000">
+                <tspan x="148" y="154">200</tspan>
+            </text>
+            <g id="func" transform="translate(161.000000, 76.000000)">
+                <g id="Rectangle">
+                    <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-2"></use>
+                    <rect stroke="#EA0000" stroke-width="1" x="0.5" y="0.5" width="129" height="34"></rect>
+                </g>
+                <text id="hardWork()" font-family="ArialMT, Arial" font-size="15" font-weight="normal" fill="#000000">
+                    <tspan x="31" y="22">hardWork()</tspan>
+                </text>
+            </g>
+            <image id="light" x="156" y="0" width="32" height="48" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAwCAYAAABwrHhvAAAABGdBTUEAA1teXP8meAAAAuFJREFUWAnFlz1rFVEQhucmEsFg4WejRUSMkB8gqIWkEoWktIgSFO0l/yASVESwsRWsrC1srANqY2NhExJBQYJfQbAwipo8s3fX7O49Z+fs2Xv3Dixn98yced95z9e9HQm0LyJzWyJPAsOdYR2R5UMi5/LOkfyH8X7D8JtuCCyVg+iz7bvI8d8iq3ZkZcQrqj8LIELuWJACf0Su7QyJflsqg2smUwHojn4VeU97JBYakNcHRU65COyykrL4zhMTDZ7md1avvpApuJ4miW3eUP0z3+BKAj9EDiPbrG9wSP8oK98lfTa2ksCmyDxzb05TlqzcAvx2v8jTcn/+20sAYMZLU/lvk+RfHrD8riBO+yZy5q/IC6czoJPEK8z9FC1p/FalQKPqAdbqK8GVFjG9xtbbyxSs4xnv9Qb1vOPUO0lyzrBqcyoA+CWGxYIr4p0QcA10KvBZ5CW+0xpQ10j4gbk/Qcv1YVuPAiy+KYZFgadwd0PBNb6HAHsmevEB/JHqH6dEgpoCAeZ+jGc+aKQjCAL3eH45XN6uAoENkRkiKSLKPh0QeVR3ZIFAQ/nvU/3PugQY0zUW31EI6L1fIJX5B9ECfuv/RcORdRWQVsE5rBYTBbRqTr81CEzwDNy0cgVXoKRi5J/mfUI7Bm15cMVKCKBA9N6vQ7gMrmM7/OTex5mpF8/uOsnqxrrANccI19Vl2qGAJwSa7H1NYJmv8mwcftvYIQuskwd2ZDHCAtfooH0P+IViavsrBFyzmAoAPs4/ow3aMRu2GxEKrtGmAoBPDwo8iEAd+etU3tXKUABwnaKg+Y8BNxVA/kmCjmVsfW0suEmAALP6JuAmAWv+m4L7FE36Ad/Dz/NNni3Xw+G0WJkg0Ondhrr9yOG8I/pZuZeAT/5+gntF0u2H7Gtl6fsluxc4cwA0OTRwJQH4zTyB1irPFAD8eUagdfD89msdPJX/olY/FPCUwMOhgSsBDqAr2rZl27UQv7R+LafiAAAAAElFTkSuQmCC"></image>
+            <rect id="Rectangle" fill="#FF0000" x="111" y="91.5" width="49" height="4"></rect>
+            <text id="100" font-family="ArialMT, Arial" font-size="15" font-weight="normal" fill="#000000">
+                <tspan x="19" y="154">100</tspan>
+            </text>
+            <g id="func" transform="translate(31.000000, 76.000000)">
+                <g id="Rectangle">
+                    <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-3"></use>
+                    <rect stroke="#EA0000" stroke-width="1" x="0.5" y="0.5" width="128" height="34"></rect>
+                </g>
+                <text id="hardWork()" font-family="ArialMT, Arial" font-size="15" font-weight="normal" fill="#000000">
+                    <tspan x="28.9259259" y="22">hardWork()</tspan>
+                </text>
+            </g>
+            <image id="light" x="26" y="0" width="32" height="48" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAwCAYAAABwrHhvAAAABGdBTUEAA1teXP8meAAAAuFJREFUWAnFlz1rFVEQhucmEsFg4WejRUSMkB8gqIWkEoWktIgSFO0l/yASVESwsRWsrC1srANqY2NhExJBQYJfQbAwipo8s3fX7O49Z+fs2Xv3Dixn98yced95z9e9HQm0LyJzWyJPAsOdYR2R5UMi5/LOkfyH8X7D8JtuCCyVg+iz7bvI8d8iq3ZkZcQrqj8LIELuWJACf0Su7QyJflsqg2smUwHojn4VeU97JBYakNcHRU65COyykrL4zhMTDZ7md1avvpApuJ4miW3eUP0z3+BKAj9EDiPbrG9wSP8oK98lfTa2ksCmyDxzb05TlqzcAvx2v8jTcn/+20sAYMZLU/lvk+RfHrD8riBO+yZy5q/IC6czoJPEK8z9FC1p/FalQKPqAdbqK8GVFjG9xtbbyxSs4xnv9Qb1vOPUO0lyzrBqcyoA+CWGxYIr4p0QcA10KvBZ5CW+0xpQ10j4gbk/Qcv1YVuPAiy+KYZFgadwd0PBNb6HAHsmevEB/JHqH6dEgpoCAeZ+jGc+aKQjCAL3eH45XN6uAoENkRkiKSLKPh0QeVR3ZIFAQ/nvU/3PugQY0zUW31EI6L1fIJX5B9ECfuv/RcORdRWQVsE5rBYTBbRqTr81CEzwDNy0cgVXoKRi5J/mfUI7Bm15cMVKCKBA9N6vQ7gMrmM7/OTex5mpF8/uOsnqxrrANccI19Vl2qGAJwSa7H1NYJmv8mwcftvYIQuskwd2ZDHCAtfooH0P+IViavsrBFyzmAoAPs4/ow3aMRu2GxEKrtGmAoBPDwo8iEAd+etU3tXKUABwnaKg+Y8BNxVA/kmCjmVsfW0suEmAALP6JuAmAWv+m4L7FE36Ad/Dz/NNni3Xw+G0WJkg0Ondhrr9yOG8I/pZuZeAT/5+gntF0u2H7Gtl6fsluxc4cwA0OTRwJQH4zTyB1irPFAD8eUagdfD89msdPJX/olY/FPCUwMOhgSsBDqAr2rZl27UQv7R+LafiAAAAAElFTkSuQmCC"></image>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="526px" height="161px" viewBox="0 0 526 161" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 47.1 (45422) - http://www.bohemiancoding.com/sketch -->
+    <title>setTimeout-trouble</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="setTimeout-trouble" transform="translate(0.000000, -3.000000)">
+            <g id="Group-2" transform="translate(56.000000, 115.000000)" stroke="#000000">
+                <path d="M0.5,5.5 L448.53,5.5" id="Shape" stroke-width="4"></path>
+                <polygon id="Shape" stroke-width="4" fill="#E6E6E6" fill-rule="nonzero" points="456.03 5.5 446.03 10.5 448.53 5.5 446.03 0.5"></polygon>
+                <path d="M15.5,10 L25.5,10" id="Shape" stroke-width="2" transform="translate(20.500000, 11.000000) rotate(90.000000) translate(-20.500000, -11.000000) "></path>
+                <path d="M96.5,10 L106.5,10" id="Shape" stroke-width="2" transform="translate(101.500000, 11.000000) rotate(90.000000) translate(-101.500000, -11.000000) "></path>
+                <path d="M176.5,10 L186.5,10" id="Shape" stroke-width="2" transform="translate(181.500000, 11.000000) rotate(90.000000) translate(-181.500000, -11.000000) "></path>
+                <path d="M256.5,10 L266.5,10" id="Shape" stroke-width="2" transform="translate(261.500000, 11.000000) rotate(90.000000) translate(-261.500000, -11.000000) "></path>
+                <path d="M336.5,10 L346.5,10" id="Shape" stroke-width="2" transform="translate(341.500000, 11.000000) rotate(90.000000) translate(-341.500000, -11.000000) "></path>
+            </g>
+            <g id="Group-1" transform="translate(68.000000, 135.000000)" font-size="28" font-family="Helvetica" fill="#000000" font-weight="normal">
+                <g id="time" transform="translate(406.000000, 0.000000)">
+                    <text>
+                        <tspan x="0.5" y="28">time</tspan>
+                    </text>
+                </g>
+                <g id="4" transform="translate(321.000000, 0.000000)">
+                    <text>
+                        <tspan x="0" y="28">4</tspan>
+                    </text>
+                </g>
+                <g id="3" transform="translate(243.000000, 0.000000)">
+                    <text>
+                        <tspan x="0" y="28">3</tspan>
+                    </text>
+                </g>
+                <g id="2" transform="translate(162.000000, 0.000000)">
+                    <text>
+                        <tspan x="0" y="28">2</tspan>
+                    </text>
+                </g>
+                <g id="1" transform="translate(81.000000, 0.000000)">
+                    <text>
+                        <tspan x="0" y="28">1</tspan>
+                    </text>
+                </g>
+                <g id="0">
+                    <text>
+                        <tspan x="0" y="28">0</tspan>
+                    </text>
+                </g>
+            </g>
+            <rect id="Rectangle-path" fill="#0000FF" fill-rule="nonzero" x="334.5" y="98" width="32" height="20"></rect>
+            <path d="M350.5,26.5 L350.5,91.5" id="arrow" stroke="#979797" stroke-linecap="square"></path>
+            <path id="arrow-decoration-1" d="M350.5,91.5 L353.5,80.7 L347.5,80.7 L350.5,91.5 Z" stroke="#979797" stroke-linecap="square"></path>
+            <text id="cb()" font-family="ArialMT, Arial" font-size="20" font-weight="normal" fill="#000000">
+                <tspan x="335" y="18">cb()</tspan>
+            </text>
+            <text id="⏰" font-family="AppleColorEmoji, Apple Color Emoji" font-size="25" font-weight="normal" fill="#000000">
+                <tspan x="154" y="90">⏰</tspan>
+            </text>
+            <rect id="Rectangle-path" fill="#FF0000" fill-rule="nonzero" x="92" y="98" width="238" height="20"></rect>
+            <text id="hardWork()" font-family="ArialMT, Arial" font-size="15" font-weight="normal" fill="#000000">
+                <tspan x="199" y="113">hardWork()</tspan>
+            </text>
+            <rect id="Rectangle-path" fill="#0000FF" fill-rule="nonzero" x="76.5" y="98" width="11" height="20"></rect>
+            <path d="M82.5,26.5 L82.5,91.5" id="arrow" stroke="#979797" stroke-linecap="square"></path>
+            <path id="arrow-decoration-1" d="M82.5,91.5 L85.5,80.7 L79.5,80.7 L82.5,91.5 Z" stroke="#979797" stroke-linecap="square"></path>
+            <text id="setTimeout(cb,-1000)" font-family="ArialMT, Arial" font-size="20" font-weight="normal" fill="#000000">
+                <tspan x="0" y="18">setTimeout(cb, 1000)</tspan>
+            </text>
+        </g>
+    </g>
+</svg>
