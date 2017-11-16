@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="471px" height="146px" viewBox="0 0 471 146" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 47.1 (45422) - http://www.bohemiancoding.com/sketch -->
+    <title>trouble-1</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="81" height="28"></rect>
+        <rect id="path-2" x="0" y="0" width="81" height="28"></rect>
+        <rect id="path-3" x="0" y="0" width="81" height="28"></rect>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="trouble-1">
+            <text id="time" fill="#000000" font-family="Helvetica" font-size="28" font-weight="normal">
+                <tspan x="419" y="109">time</tspan>
+            </text>
+            <path d="M0,75 L448,75" id="Shape" stroke="#000000" stroke-width="4"></path>
+            <polygon id="Shape" stroke="#000000" stroke-width="4" fill="#E6E6E6" fill-rule="nonzero" points="455 75 445 79 447.5 75 445 71"></polygon>
+            <path d="M255,77.2 L325,76.8" id="Shape" stroke="#000000" stroke-width="2" transform="translate(290.000000, 77.000000) rotate(90.000000) translate(-290.000000, -77.000000) "></path>
+            <path d="M125,77 L195,77" id="Shape" stroke="#000000" stroke-width="2" transform="translate(160.000000, 77.000000) rotate(90.000000) translate(-160.000000, -77.000000) "></path>
+            <path d="M-6,77 L64,77" id="Shape" stroke="#000000" stroke-width="2" transform="translate(29.000000, 77.000000) rotate(90.000000) translate(-29.000000, -77.000000) "></path>
+            <rect id="Rectangle" fill="#FF0000" x="370" y="73" width="49" height="4"></rect>
+            <path d="M371.5,88.5 L371.5,98.5" id="Line" stroke="#979797" stroke-linecap="square"></path>
+            <text id="352" font-family="ArialMT, Arial" font-size="15" font-weight="normal" fill="#000000">
+                <tspan x="361" y="116">352</tspan>
+            </text>
+            <text id="300" font-family="ArialMT, Arial" font-size="15" font-weight="normal" fill="#000000">
+                <tspan x="278" y="145">300</tspan>
+            </text>
+            <g id="func" transform="translate(291.000000, 61.000000)">
+                <g id="Rectangle">
+                    <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-1"></use>
+                    <rect stroke="#979797" stroke-width="1" x="0.5" y="0.5" width="80" height="27"></rect>
+                </g>
+                <text id="hardWork()" font-family="ArialMT, Arial" font-size="12" font-weight="normal" fill="#000000">
+                    <tspan x="11" y="18.7">hardWork()</tspan>
+                </text>
+            </g>
+            <image id="light" x="286" y="0" width="32" height="38" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAwCAYAAABwrHhvAAAABGdBTUEAA1teXP8meAAAAuFJREFUWAnFlz1rFVEQhucmEsFg4WejRUSMkB8gqIWkEoWktIgSFO0l/yASVESwsRWsrC1srANqY2NhExJBQYJfQbAwipo8s3fX7O49Z+fs2Xv3Dixn98yced95z9e9HQm0LyJzWyJPAsOdYR2R5UMi5/LOkfyH8X7D8JtuCCyVg+iz7bvI8d8iq3ZkZcQrqj8LIELuWJACf0Su7QyJflsqg2smUwHojn4VeU97JBYakNcHRU65COyykrL4zhMTDZ7md1avvpApuJ4miW3eUP0z3+BKAj9EDiPbrG9wSP8oK98lfTa2ksCmyDxzb05TlqzcAvx2v8jTcn/+20sAYMZLU/lvk+RfHrD8riBO+yZy5q/IC6czoJPEK8z9FC1p/FalQKPqAdbqK8GVFjG9xtbbyxSs4xnv9Qb1vOPUO0lyzrBqcyoA+CWGxYIr4p0QcA10KvBZ5CW+0xpQ10j4gbk/Qcv1YVuPAiy+KYZFgadwd0PBNb6HAHsmevEB/JHqH6dEgpoCAeZ+jGc+aKQjCAL3eH45XN6uAoENkRkiKSLKPh0QeVR3ZIFAQ/nvU/3PugQY0zUW31EI6L1fIJX5B9ECfuv/RcORdRWQVsE5rBYTBbRqTr81CEzwDNy0cgVXoKRi5J/mfUI7Bm15cMVKCKBA9N6vQ7gMrmM7/OTex5mpF8/uOsnqxrrANccI19Vl2qGAJwSa7H1NYJmv8mwcftvYIQuskwd2ZDHCAtfooH0P+IViavsrBFyzmAoAPs4/ow3aMRu2GxEKrtGmAoBPDwo8iEAd+etU3tXKUABwnaKg+Y8BNxVA/kmCjmVsfW0suEmAALP6JuAmAWv+m4L7FE36Ad/Dz/NNni3Xw+G0WJkg0Ondhrr9yOG8I/pZuZeAT/5+gntF0u2H7Gtl6fsluxc4cwA0OTRwJQH4zTyB1irPFAD8eUagdfD89msdPJX/olY/FPCUwMOhgSsBDqAr2rZl27UQv7R+LafiAAAAAElFTkSuQmCC"></image>
+            <rect id="Rectangle" fill="#FF0000" x="240" y="73" width="49" height="4"></rect>
+            <path d="M240.5,88.5 L240.5,98.5" id="Line" stroke="#979797" stroke-linecap="square"></path>
+            <text id="253" font-family="ArialMT, Arial" font-size="15" font-weight="normal" fill="#000000">
+                <tspan x="230" y="116">253</tspan>
+            </text>
+            <text id="200" font-family="ArialMT, Arial" font-size="15" font-weight="normal" fill="#000000">
+                <tspan x="147" y="145">200</tspan>
+            </text>
+            <g id="func" transform="translate(160.000000, 61.000000)">
+                <g id="Rectangle">
+                    <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-2"></use>
+                    <rect stroke="#979797" stroke-width="1" x="0.5" y="0.5" width="80" height="27"></rect>
+                </g>
+                <text id="hardWork()" font-family="ArialMT, Arial" font-size="12" font-weight="normal" fill="#000000">
+                    <tspan x="9" y="18.7">hardWork()</tspan>
+                </text>
+            </g>
+            <image id="light" x="155" y="0" width="32" height="38" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAwCAYAAABwrHhvAAAABGdBTUEAA1teXP8meAAAAuFJREFUWAnFlz1rFVEQhucmEsFg4WejRUSMkB8gqIWkEoWktIgSFO0l/yASVESwsRWsrC1srANqY2NhExJBQYJfQbAwipo8s3fX7O49Z+fs2Xv3Dixn98yced95z9e9HQm0LyJzWyJPAsOdYR2R5UMi5/LOkfyH8X7D8JtuCCyVg+iz7bvI8d8iq3ZkZcQrqj8LIELuWJACf0Su7QyJflsqg2smUwHojn4VeU97JBYakNcHRU65COyykrL4zhMTDZ7md1avvpApuJ4miW3eUP0z3+BKAj9EDiPbrG9wSP8oK98lfTa2ksCmyDxzb05TlqzcAvx2v8jTcn/+20sAYMZLU/lvk+RfHrD8riBO+yZy5q/IC6czoJPEK8z9FC1p/FalQKPqAdbqK8GVFjG9xtbbyxSs4xnv9Qb1vOPUO0lyzrBqcyoA+CWGxYIr4p0QcA10KvBZ5CW+0xpQ10j4gbk/Qcv1YVuPAiy+KYZFgadwd0PBNb6HAHsmevEB/JHqH6dEgpoCAeZ+jGc+aKQjCAL3eH45XN6uAoENkRkiKSLKPh0QeVR3ZIFAQ/nvU/3PugQY0zUW31EI6L1fIJX5B9ECfuv/RcORdRWQVsE5rBYTBbRqTr81CEzwDNy0cgVXoKRi5J/mfUI7Bm15cMVKCKBA9N6vQ7gMrmM7/OTex5mpF8/uOsnqxrrANccI19Vl2qGAJwSa7H1NYJmv8mwcftvYIQuskwd2ZDHCAtfooH0P+IViavsrBFyzmAoAPs4/ow3aMRu2GxEKrtGmAoBPDwo8iEAd+etU3tXKUABwnaKg+Y8BNxVA/kmCjmVsfW0suEmAALP6JuAmAWv+m4L7FE36Ad/Dz/NNni3Xw+G0WJkg0Ondhrr9yOG8I/pZuZeAT/5+gntF0u2H7Gtl6fsluxc4cwA0OTRwJQH4zTyB1irPFAD8eUagdfD89msdPJX/olY/FPCUwMOhgSsBDqAr2rZl27UQv7R+LafiAAAAAElFTkSuQmCC"></image>
+            <rect id="Rectangle" fill="#FF0000" x="110" y="73" width="49" height="4"></rect>
+            <text id="51" font-family="ArialMT, Arial" font-size="15" font-weight="normal" fill="#000000">
+                <tspan x="98" y="116">151</tspan>
+            </text>
+            <path d="M110.5,88.5 L110.5,98.5" id="Line" stroke="#979797" stroke-linecap="square"></path>
+            <text id="100" font-family="ArialMT, Arial" font-size="15" font-weight="normal" fill="#000000">
+                <tspan x="18" y="145">100</tspan>
+            </text>
+            <g id="func" transform="translate(30.000000, 61.000000)">
+                <g id="Rectangle">
+                    <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-3"></use>
+                    <rect stroke="#979797" stroke-width="1" x="0.5" y="0.5" width="80" height="27"></rect>
+                </g>
+                <text id="hardWork()" font-family="ArialMT, Arial" font-size="12" font-weight="normal" fill="#000000">
+                    <tspan x="10" y="18.7">hardWork()</tspan>
+                </text>
+            </g>
+            <image id="light" x="25" y="0" width="32" height="38" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAwCAYAAABwrHhvAAAABGdBTUEAA1teXP8meAAAAuFJREFUWAnFlz1rFVEQhucmEsFg4WejRUSMkB8gqIWkEoWktIgSFO0l/yASVESwsRWsrC1srANqY2NhExJBQYJfQbAwipo8s3fX7O49Z+fs2Xv3Dixn98yced95z9e9HQm0LyJzWyJPAsOdYR2R5UMi5/LOkfyH8X7D8JtuCCyVg+iz7bvI8d8iq3ZkZcQrqj8LIELuWJACf0Su7QyJflsqg2smUwHojn4VeU97JBYakNcHRU65COyykrL4zhMTDZ7md1avvpApuJ4miW3eUP0z3+BKAj9EDiPbrG9wSP8oK98lfTa2ksCmyDxzb05TlqzcAvx2v8jTcn/+20sAYMZLU/lvk+RfHrD8riBO+yZy5q/IC6czoJPEK8z9FC1p/FalQKPqAdbqK8GVFjG9xtbbyxSs4xnv9Qb1vOPUO0lyzrBqcyoA+CWGxYIr4p0QcA10KvBZ5CW+0xpQ10j4gbk/Qcv1YVuPAiy+KYZFgadwd0PBNb6HAHsmevEB/JHqH6dEgpoCAeZ+jGc+aKQjCAL3eH45XN6uAoENkRkiKSLKPh0QeVR3ZIFAQ/nvU/3PugQY0zUW31EI6L1fIJX5B9ECfuv/RcORdRWQVsE5rBYTBbRqTr81CEzwDNy0cgVXoKRi5J/mfUI7Bm15cMVKCKBA9N6vQ7gMrmM7/OTex5mpF8/uOsnqxrrANccI19Vl2qGAJwSa7H1NYJmv8mwcftvYIQuskwd2ZDHCAtfooH0P+IViavsrBFyzmAoAPs4/ow3aMRu2GxEKrtGmAoBPDwo8iEAd+etU3tXKUABwnaKg+Y8BNxVA/kmCjmVsfW0suEmAALP6JuAmAWv+m4L7FE36Ad/Dz/NNni3Xw+G0WJkg0Ondhrr9yOG8I/pZuZeAT/5+gntF0u2H7Gtl6fsluxc4cwA0OTRwJQH4zTyB1irPFAD8eUagdfD89msdPJX/olY/FPCUwMOhgSsBDqAr2rZl27UQv7R+LafiAAAAAElFTkSuQmCC"></image>
+        </g>
+    </g>
+</svg>
