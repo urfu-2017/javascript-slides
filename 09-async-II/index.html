@@ -1,0 +1,870 @@
+<!doctype html>
+<html lang="ru">
+
+<head>
+    <meta charset="utf-8">
+    <link rel="shortcut icon" href="https://yandex.ru/blog/i/ru/yablogs-favicon.ico">
+
+    <title>Асинхронность. Часть II</title>
+
+    <meta name="description" content="Приемы работы с асинхронностью">
+    <meta name="author" content="Сергей Жигалов">
+
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme/white.css">
+    <link rel="stylesheet" href="css/user.css">
+
+	<link rel="stylesheet" href="css/tomorrow.css">
+</head>
+<body>
+<div class="reveal"><div class="slides">
+
+<section>
+    <h1>Асинхронность. Часть II</h1>
+    <h2>Инструменты</h2>
+    <p class="author">Сергей Жигалов</p>
+</section>
+
+<section>
+    <section>
+        <h2>Повторение</h2>
+    </section>
+
+    <section>
+        <blockquote cite="https://github.com/azat-io/you-dont-know-js-ru/blob/master/async%20%26%20performance/ch1.md#event-loop">
+            В любой момент времени, любой участок кода
+            исполняется в единственном потоке.
+        </blockquote>
+    </section>
+
+    <section>
+        <h3>Run-to-Completion</h3>
+        <pre class="js"><code data-trim>
+let counter = 0;
+
+counter++;
+
+console.log(counter); // 1
+        </code></pre>
+    </section>
+
+    <section>
+        <h3>Now & Later</h3>
+        <pre class="js"><code data-trim>
+console.log('Я выполняюсь сейчас');
+
+setTimeout(() => {
+    console.log('Я выполнюсь позже');
+}, 5000);
+
+console.log('Я тоже выполняюсь сейчас');
+        </code></pre>
+    </section>
+
+    <section>
+        <h3>Now ...</h3>
+        <pre class="js"><code data-trim data-noescape>
+<mark>console.log('Я выполняюсь сейчас');</mark>
+
+<mark>setTimeout(() => {</mark>
+    console.log('Я выполнюсь позже');
+<mark>}, 5000);</mark>
+
+<mark>console.log('Я тоже выполняюсь сейчас');</mark>
+        </code></pre>
+    </section>
+
+    <section>
+        <h3>... & Later</h3>
+        <pre class="js"><code data-trim data-noescape>
+console.log('Я выполняюсь сейчас');
+
+setTimeout(() => {
+    <mark>console.log('Я выполнюсь позже');</mark>
+}, 5000);
+
+console.log('Я тоже выполняюсь сейчас');
+        </code></pre>
+    </section>
+
+    <section>
+        <h3>Event Loop</h3>
+        <pre class="js"><code data-trim>
+const eventLoop = [];
+
+while (true) {
+    if (eventLoop.length > 0) {
+        const event = eventLoop.shift();
+
+        event();
+    }
+}
+        </code></pre>
+    </section>
+</section>
+
+<section>
+    <section>
+        <h2>Инструменты</h2>
+        <ul>
+            <li class="fragment">callback</li>
+            <li class="fragment">promises</li>
+            <li class="fragment">async await</li>
+        </ul>
+    </section>
+</section>
+
+<section>
+    <section>
+        <h2>callback</h2>
+    </section>
+
+    <section>
+        <blockquote cite="https://github.com/azat-io/you-dont-know-js-ru/blob/master/async%20%26%20performance/ch1.md#event-loop">
+            Hey, I'm going to suspend execution for now,
+            but whenever you finish with that network request,
+            and you have some data, please <b>call</b> this function <b>back.</b>"
+        </blockquote>
+    </section>
+
+    <section>
+        <h3>Пример</h3>
+        <pre class="js"><code data-trim data-noescape>
+setTimeout(<span class="fragment">() => {
+    console.log('Я выполнюсь через 5 секунд');
+}</span>, 5000);
+        </code></pre>
+    </section>
+
+    <section>
+        <h3>Аргументы</h3>
+        <pre class="js"><code data-trim data-noescape>
+const cb = (<span class="fragment" data-fragment-index="1">error</span>, <span class="fragment" data-fragment-index="2">data</span>) => {
+    <span class="fragment" data-fragment-index="1">if(error) {
+        console.error(error);
+    }</span><span class="fragment" data-fragment-index="2"> else {
+        console.log(data);
+    }</span>
+}
+        </code></pre>
+    </section>
+
+    <section>
+        <h3>Нелинейный код</h3>
+        <pre class="js"><code data-trim>
+console.log('A');
+
+setTimeout(() => {
+    console.log('B');
+
+    setTimeout(() => console.log('C'));
+
+    console.log('D');
+});
+
+console.log('E');
+        </code></pre>
+        <div class="fragment">
+A → E → B → D → C
+        </div>
+    </section>
+
+    <section>
+        <h3>callback hell</h3>
+        <pre class="js size-XS"><code data-trim data-noescape>
+<span class="fragment" data-fragment-index="1">setTimeout(() => {</span>
+<span class="fragment" data-fragment-index="2">    fs.readFile('./path.json', (err, data) => {</span>
+<span class="fragment" data-fragment-index="3">        request(data.url, (err, res, body) => {</span>
+<span class="fragment" data-fragment-index="4">            setTimeout(() => {</span>
+<span class="fragment" data-fragment-index="5">                const data = JSON.parse(body);</span>
+<span class="fragment" data-fragment-index="5">                console.log(data.fact);</span>
+<span class="fragment" data-fragment-index="4">            }, 1000);</span>
+<span class="fragment" data-fragment-index="3">        });</span>
+<span class="fragment" data-fragment-index="2">    });</span>
+<span class="fragment" data-fragment-index="1">}, 5000);</span>
+        </code></pre>
+        <img
+            src="images/callback-hell.gif"
+            alt="callback-hell"
+            class="fragment"
+            data-fragment-index="6"
+            style="position: absolute; top: 213px; left: 51px;"
+        >
+    </section>
+
+    <section>
+        <h3>Задача</h3>
+        <blockquote>
+            Получить текущую температуру воздуха при помощи API погоды
+        </blockquote>
+    </section>
+
+    <section>
+        <h3>Пример</h3>
+        <a href="https://api.weather.yandex.ru/v1/forecast?geoid=54&hours=false&limit=2">
+            https://api.weather.yandex.ru/v1/forecast?<br>geoid=54
+        </a>
+    </section>
+
+    <section>
+        <h3>index.js</h3>
+        <pre class="js"><code data-trim>
+const getWeather = require('./getWeather');
+
+getWeather(54, (error, temp) => {
+    if (error) {
+        console.error(error);
+    } else {
+        console.log(temp); // -3
+    }
+});
+        </code></pre>
+    </section>
+
+    <section>
+        <h3>getWeather.js</h3>
+        <pre class="js size-XS"><code data-trim data-noescape>
+const request = require('request');
+const getWeather = (geoid, cb) => {
+    <span class="fragment" data-fragment-index="1">const url = `https://.../?geoid=${geoid}`;</span>
+
+    <span class="fragment" data-fragment-index="2">request(url, (err, res, body) => {</span>
+        <span class="fragment" data-fragment-index="3">if (err) {
+            cb(err);
+        } </span><span class="fragment" data-fragment-index="4">else {
+            const data = JSON.parse(body);
+
+            cb(null, data.fact.temp);
+        }</span>
+    <span class="fragment" data-fragment-index="2">});</span>
+}
+
+module.exports = getWeather;
+        </code></pre>
+    </section>
+
+    <section>
+        <h3>Необработанные исключения</h3>
+        <pre class="js size-XS"><code data-trim data-noescape>
+const request = require('request');
+const getWeather = (geoid, cb) => {
+    const url = `https://.../?geoid=${geoid}`;
+
+    request(url, (err, res, body) => {
+        if (err) {
+            cb(err);
+        } else {
+            <mark>const data = JSON.parse(body);</mark>
+
+            cb(null, data.fact.temp);
+        }
+    });
+}
+
+module.exports = getWeather;
+        </code></pre>
+    </section>
+
+    <section>
+        <pre class="html"><code data-trim>
+<h1 style='color:red'>
+    Error 404: Not found :-(
+</h1>
+        </code></pre>
+    </section>
+
+    <section>
+        <h3>Задача</h3>
+        <blockquote>
+            Вычислить среднюю температуру воздуха по области
+            используя API погоды
+        </blockquote>
+    </section>
+
+    <section>
+        <h3>index.js</h3>
+        <pre class="js"><code data-trim>
+const getWeather = require('./getWeather');
+
+getWeather(54, (err, t1) => {
+    getWeather(2, (err, t2) => {
+        getWeather(5, (err, t3) => {
+            console.log((t1 + t2 + t3) / 3);
+        });
+    });
+});
+        </code></pre>
+    </section>
+
+    <section>
+        <h3>index.js</h3>
+        <pre class="js"><code data-trim>
+const getWeather = require('./getWeather');
+
+console.time('time');
+getWeather(54, (err, t1) => {
+    getWeather(2, (err, t2) => {
+        getWeather(5, (err, t3) => {
+            console.log((t1 + t2 + t3) / 3);
+            console.timeEnd('time'); // 691ms
+        });
+    });
+});
+        </code></pre>
+    </section>
+
+    <section>
+        <h3>Последовательно</h3>
+        <img
+            src="images/getWeatherConsistently.svg"
+            alt="getWeatherConsistently">
+    </section>
+
+    <section>
+        <h3>Параллельно</h3>
+        <img
+            src="images/getWeatherParallel.svg"
+            alt="getWeatherConsistently">
+    </section>
+
+    <section>
+        <h3>index.js</h3>
+        <pre class="js"><code data-trim>
+const t = [];
+const cb = (err, temp) => {
+    t.push(temp);
+
+    if(t.length === 3) {
+        console.log((t[0] + t[1] + t[2]) / 3);
+    }
+}
+        </code></pre>
+        <pre class="js fragment"><code data-trim>
+getWeather(54, cb);
+getWeather(2, cb);
+getWeather(5, cb);
+        </code></pre>
+    </section>
+
+    <section data-background='images/async-logo_readme.jpg' data-background-size='contain'>
+    </section>
+
+    <section>
+        <h3><a href="https://caolan.github.io/async/">async.js</a> </h3>
+        <pre class="js"><code data-trim>
+const getWeather = require('./getWeather');
+const async = require('async');
+
+async.parallel([
+    cb => getWeather(54, cb),
+    cb => getWeather(2, cb),
+    cb => getWeather(5, cb)
+], (err, t) => {
+    console.log((t[0] + t[1] + t[2]) / 3);
+});
+        </code></pre>
+    </section>
+
+    <section>
+        <h3>Итого</h3>
+        <ul>
+            <li class="fragment pos">Простая абстракция</li>
+            <li class="fragment neg">Нелинейный код</li>
+            <li class="fragment neg">callback hell</li>
+            <li class="fragment neg">Необработанные исключения</li>
+            <li class="fragment neg">Сложный код когда несколько асинхронностей</li>
+        </ul>
+    </section>
+
+    <section data-background='images/callback-cat.gif' data-background-size='contain'>
+    </section>
+</section>
+
+<section>
+    <section>
+        <h3>Вот бы вместо</h3>
+        <pre class="js"><code data-trim>
+const getWeather = require('./getWeather');
+
+getWeather(54, (error, temp) => {
+    if (error) {
+        console.error(error);
+    } else {
+        console.log(temp);
+    }
+});
+        </code></pre>
+    </section>
+
+    <section>
+        <h3>... можно было писать</h3>
+        <pre class="js"><code>
+const getWeather = require('./getWeather');
+
+getWeather(54)
+    .then(temp => console.log(temp))
+    .catch(error => console.error(error));
+        </code></pre>
+    </section>
+
+    <section>
+        <h3>... или даже</h3>
+        <pre class="js"><code data-trim>
+const getWeather = require('./getWeather');
+
+getWeather(54)
+    .then(console.log)
+    .catch(console.error);
+        </code></pre>
+    </section>
+
+    <section>
+        <h3>... а параллельность так</h3>
+        <pre class="js size-XS"><code data-trim>
+waitAllAsync([
+    getWeather(54),
+    getWeather(2),
+    getWeather(5)
+])
+    .then(t => console.log((t[0] + t[1] + t[2]) / 3))
+    .catch(console.error)
+        </code></pre>
+    </section>
+
+    <section>
+        <h2>promises</h2>
+        <h1>🎉</h1>
+    </section>
+
+    <section>
+        <h2>getWeather.js</h2>
+        <pre class="js size-XS"><code data-trim data-noescape>
+const request = require('request');
+const getWeather =
+    geoid => new Promise((<span class="fragment" data-fragment-index="3">resolve</span>, <span class="fragment" data-fragment-index="4">reject</span>) => {
+        <span class="fragment" data-fragment-index="1">const url = `https://.../?geoid=${geoid}`;</span>
+
+        <span class="fragment" data-fragment-index="2">request(url, (err, res, body) => {</span>
+            <span class="fragment" data-fragment-index="4">if (err) {
+                reject(err);
+            } </span><span class="fragment" data-fragment-index="3">else {
+                const data = JSON.parse(body);
+
+                resolve(data.fact.temp);
+            }</span>
+        <span class="fragment" data-fragment-index="2">});</span>
+    });
+module.exports = getWeather;
+        </code></pre>
+    </section>
+
+    <section>
+        <h3>index.js</h3>
+        <pre class="js"><code data-trim data-noescape>
+const getWeather = require('./getWeather');
+
+getWeather(54)
+    .then(<span class="fragment">console.log</span>, <span class="fragment">console.error</span>);
+        </code></pre>
+    </section>
+
+    <section data-background='images/promise.svg' data-background-size='contain'>
+    </section>
+
+    <section>
+        <h3>unresolved → resolve</h3>
+        <ul>
+            <li><code>resolve</code></li>
+            <li><code>reject</code></li>
+            <li>Произошло исключение</li>
+        </ul>
+    </section>
+</section>
+
+<section>
+    <section>
+        <h3>Чейнинг промисов</h3>
+    </section>
+
+    <section>
+        <h3>Promise</h3>
+        <img src="images/promise_base.svg" alt="promise_base">
+    </section>
+
+    <section>
+        <blockquote>
+            Вызов метода <code>.then</code> возвращает новый промис
+        </blockquote>
+    </section>
+
+    <section>
+        <img src="images/then.svg" alt="then">
+    </section>
+
+    <section>
+        <h3>success</h3>
+        <img src="images/then_resolve.svg" alt="then_resolve">
+    </section>
+
+    <section>
+        <h3>error</h3>
+        <img src="images/then_reject.svg" alt="then_reject">
+    </section>
+
+    <section>
+        <h3>Хэлперы</h3>
+
+        <pre class="js fragment"><code data-trim>
+const identity = data => data;
+        </code></pre>
+
+        <pre class="js fragment"><code data-trim>
+const thrower = error => { throw error; };
+        </code></pre>
+    </section>
+
+    <section>
+        <pre class="js"><code data-trim data-noescape>
+const getWeather = require('./getWeather');
+
+getWeather(54)
+    .then(console.log, console.error);
+        </code></pre>
+    </section>
+
+    <section>
+        <pre class="js"><code data-trim data-noescape>
+const getWeather = require('./getWeather');
+
+getWeather(54)
+    .then(console.log, thrower)
+    .then(identity, console.error);
+        </code></pre>
+    </section>
+
+    <section>
+        <img src="images/promise_example_simple.svg" alt="promise_example_simple">
+    </section>
+
+    <section>
+        <img src="images/promise_example_advanced.svg" alt="promise_example_advanced">
+    </section>
+
+    <section>
+        <h3>Задача</h3>
+        <blockquote>
+            Получить температуру воздуха при помощи API погоды
+            и записать результат в файл.
+        </blockquote>
+    </section>
+
+    <section>
+        <h3>getWeather</h3>
+        <pre class="js size-XS"><code data-trim data-noescape>
+const request = require('request');
+
+const getWeather =
+    geoid => new Promise((resolve, reject) => {
+        const url = `https://.../?geoid=${geoid}`;
+
+        request(url, (err, res, body) => err ?
+            reject(err) :
+            resolve(body));
+    });
+        </code></pre>
+    </section>
+
+    <section>
+        <pre class="js size-XS"><code data-trim data-noescape>
+getWeather(54)
+    <span class="fragment" data-fragment-index="1">.then(JSON.parse, thrower)</span>
+    <span class="fragment" data-fragment-index="2">.then(identity, () => ({ fact: { temp: 0 } }))</span>
+    <span class="fragment" data-fragment-index="3">.then(
+        data => console.log(data.fact.temp),
+        thrower
+    );</span>
+        </code></pre>
+    </section>
+
+    <section>
+        <img src="images/promise_example_get_weather.svg" alt="promise_example_get_weather">
+    </section>
+
+    <section>
+        <h3>saveToFile</h3>
+        <pre class="js size-XXS"><code data-trim data-noescape>
+const fs = require('fs');
+
+const saveToFile =
+    data => new Promise((resolve, reject) => {
+        fs.writeFile('./result.json', data, err => err ?
+            reject(err) :
+            resolve('success'));
+    });
+        </code></pre>
+    </section>
+
+    <section>
+        <pre class="js size-XS"><code data-trim data-noescape>
+getWeather(54)
+    .then(JSON.parse, thrower)
+    .then(identity, () => ({ fact: { temp: 0 } }))
+    <span class="fragment" data-fragment-index="2">.then(
+        data => saveToFile(data.fact.temp)</span>
+            <span class="fragment" data-fragment-index="3">.then(console.log, thrower)</span>
+            <span class="fragment" data-fragment-index="4">.then(identity, console.error),</span>
+        <span class="fragment" data-fragment-index="2">thrower
+    );</span>
+        </code></pre>
+    </section>
+
+    <section>
+        <blockquote>
+            В <code>.then</code> можно передать функцию, которая вернет промис.
+            Выполнение цепочки продолжится когда промис выполнится.
+        </blockquote>
+    </section>
+
+    <section>
+        <pre class="js size-XS"><code data-trim data-noescape>
+getWeather(54)
+    .then(JSON.parse, thrower)
+    .then(identity, () => ({ fact: { temp: 0 } }))
+    .then(
+        data => saveToFile(data.fact.temp),
+        thrower
+    )
+    .then(console.log, thrower)
+    .then(identity, console.error);
+        </code></pre>
+    </section>
+
+    <section>
+        <img src="images/promise_example_save_to_file.svg" alt="promise_example_save_to_file">
+    </section>
+
+    <section>
+        <pre class="js size-XS"><code data-trim data-noescape>
+getWeather(54)
+    .then(JSON.parse, <mark>thrower</mark>)
+    .then(<mark>identity</mark>, () => ({ fact: { temp: 0 } }))
+    .then(
+        data => saveToFile(data.fact.temp),
+        <mark>thrower</mark>
+    )
+    .then(console.log, <mark>thrower</mark>)
+    .then(<mark>identity</mark>, console.error);
+        </code></pre>
+    </section>
+
+    <section>
+        <pre class="js size-XS"><code data-trim data-noescape>
+getWeather(54)
+    .then(JSON.parse)
+    .catch(() => ({ fact: { temp: 0 } }))
+    .then(data => saveToFile(data.fact.temp))
+    .then(console.log)
+    .catch(console.error);
+        </code></pre>
+    </section>
+
+    <section data-background='images/chaining.jpg' data-background-size='contain'>
+    </section>
+</section>
+
+<section>
+    <section>
+        <h3>Promise.all</h3>
+        <pre class="js size-XS"><code data-trim>
+Promise.all([
+    getWeather(54),
+    getWeather(2),
+    getWeather(5)
+])
+    .then(t => console.log((t[0] + t[1] + t[2]) / 3))
+    .catch(console.error)
+        </code></pre>
+    </section>
+
+    <section>
+        <h3>Promise.resolve</h3>
+        <pre class="js size-XS"><code data-trim>
+Promise
+    .resolve('   УДАЛЯЕМ     Лишние пробелы  ')
+    .then(data => data.trim())
+    .then(data => data.replace(/\s+/g, ' '))
+    .then(data => data.toLowerCase())
+    .then(console.log);
+        </code></pre>
+
+        <pre class="js fragment"><code data-trim>
+// удаляем лишние пробелы
+        </code></pre>
+    </section>
+
+    <section>
+        <h3>Promise.reject</h3>
+        <pre class="js"><code data-trim>
+Promise
+    .reject('error')
+    .then(identity, console.error); // "error"
+        </code></pre>
+    </section>
+
+    <section>
+        <h3>Итого</h3>
+        <ul>
+            <li class="fragment neg">Сложная абстракция</li>
+            <li class="fragment neg">Более линейный код</li>
+            <li class="fragment pos">Избавились от callback hell</li>
+            <li class="fragment pos">Нет необработанных исключений</li>
+            <li class="fragment pos">Легче писать сложную логику</li>
+        </ul>
+    </section>
+
+    <section data-background='images/caniuse_promise.jpg' data-background-size='contain'>
+    </section>
+
+    <section>
+        <img src="images/bluebird.png" alt="bluebird">
+    </section>
+
+    <section>
+        <h3><a href="http://bluebirdjs.com/docs/api-reference.html">bluebird</a></h3>
+        <pre class="js"><code data-trim>
+const Promise = require('bluebird');
+
+Promise
+    .props({
+        ekb: getWeather(54),
+        spb: getWeather(2),
+        msk: getWeather(5)
+    })
+    .then(({ ekb, spb, msk }) => {
+        console.log((ekb + spb + msk) / 3);
+    });
+        </code></pre>
+    </section>
+</section>
+
+<section>
+    <section>
+        <h3>Этот код выглядит хорошо ...</h3>
+        <pre class="js"><code data-trim data-noescape>
+getWeather(54)
+    .then(JSON.parse)
+    .catch(() => ({ fact: { temp: 0 } }))
+    .then(console.log)
+    .catch(console.error);
+        </code></pre>
+    </section>
+
+    <section>
+        <h3>... но так понятнее</h3>
+        <pre class="js"><code data-trim data-noescape>
+try {
+    const body = <mark class="fragment">await</mark> getWeather(geoid);
+
+    return JSON.parse(body);
+} catch (error) {
+    return { fact: { temp: 0 } };
+}
+        </code></pre>
+    </section>
+
+    <section>
+        <blockquote>
+            <code>await</code> указывает на то,
+            что нужно дождаться выполнение промиса.
+            Если промис зарезолвился - вернется результат,
+            иначе возникнет исключение.
+        </blockquote>
+    </section>
+
+    <section>
+        <h2>async await</h2>
+    </section>
+
+    <section>
+        <pre class="js"><code data-trim data-noescape>
+const getTempData = <mark>async</mark> geoid => {
+    try {
+        const body = <mark>await</mark> getWeather(geoid);
+
+        return JSON.parse(body);
+    } catch (error) {
+        return { fact: { temp: 0 } };
+    }
+}
+        </code></pre>
+    </section>
+
+    <section>
+        <blockquote>
+            При вызове асинхронной функции получаем promise
+        </blockquote>
+    </section>
+
+    <section>
+        <img src="images/circle.jpeg" alt="circle">
+    </section>
+
+    <section>
+        <pre class="js"><code data-trim>
+const run = async () => {
+    const data = await getTempData(54);
+
+    return await saveToFile(data.fact.temp);
+}
+        </code></pre>
+
+        <pre class="js"><code data-trim>
+run()
+    .then(console.log)
+    .catch(console.error);
+        </code></pre>
+    </section>
+
+    <section>
+        <h3>Итого</h3>
+        <ul>
+            <li class="fragment neg">Сложная абстракция</li>
+            <li class="fragment pos">Линейный код</li>
+            <li class="fragment pos">Избавились от callback hell</li>
+            <li class="fragment pos">Нет необработанных исключений</li>
+            <li class="fragment pos">Легче писать сложную логику</li>
+        </ul>
+    </section>
+
+    <section data-background='images/caniuse_async_function.jpg' data-background-size='contain'>
+    </section>
+</section>
+
+<section data-background='images/the_end.png' data-background-size='contain'>
+</section>
+</div></div>
+
+<script src="js/head.min.js"></script>
+<script src="js/reveal.js"></script>
+<script>
+    Reveal.initialize({
+        controls: false,
+        slideNumber: true,
+        history: true,
+        dependencies: [
+            {
+                src: 'js/highlight.js',
+                async: true,
+                condition: function () {
+                    return Boolean(document.querySelector('pre code'));
+                },
+                callback: function () {
+                    hljs.initHighlightingOnLoad();
+                }
+            }
+        ]
+    });
+</script>
+
+</body>
+</html>

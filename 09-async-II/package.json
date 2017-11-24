@@ -1,0 +1,23 @@
+{
+  "name": "async-part-2",
+  "version": "0.0.1",
+  "description": "Slides and examples for lecture of async in JavaScript",
+  "main": "index.js",
+  "directories": {
+    "example": "examples"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.yandex-team.ru:zhigalov/async-part-2.git"
+  },
+  "author": "Sergey Zhigalov <zhigalov@yandex-team.ru>",
+  "license": "MIT",
+  "dependencies": {
+    "async": "2.6.0",
+    "bluebird": "3.5.1",
+    "request": "2.83.0"
+  }
+}
