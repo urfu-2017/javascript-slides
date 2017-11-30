@@ -15,7 +15,8 @@
 }
 
 .black h2 strong,
-.black p strong
+.black p strong,
+.black li strong
 {
     color: #fcc28c;
 }
@@ -35,6 +36,12 @@
 .black .reveal .slides .red *
 {
     color: #d36363;
+}
+
+.black .reveal .slides .green,
+.black .reveal .slides .green *
+{
+    color: #a2fca2;
 }
 
 /* Modified Agate highlightjs theme */

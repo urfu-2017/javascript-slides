@@ -44,6 +44,11 @@
     padding: 15px 0;
 }
 
+.reveal li
+{
+    padding: 0 0 25px;
+}
+
 .reveal pre
 {
     margin: 15px 0;
@@ -76,4 +81,9 @@
 .reveal small
 {
     font-size: .5em;
+}
+
+.reveal td
+{
+    padding: 15px;
 }
