@@ -6,6 +6,6 @@
 4. Глобальный объект. Функции. Массивы. ([слайды](https://urfu-2017.github.io/javascript-slides/04-global-functions-arrays), [pdf](04-global-functions-arrays/global-functions-arrays.pdf))
 6. Прототипы. Свойства полей. ([слайды](https://urfu-2017.github.io/javascript-slides/06-prototypes/index.html#/), <kbd>сtrl</kbd> + <kbd>alt</kbd> + <kbd>N</kbd> – ночной режим, [pdf](06-prototypes/prototypes.pdf), [видео](https://www.youtube.com/watch?v=Dg_v5MHvORk&feature=youtu.be))
 7. Конструирование объектов. Развитие JavaScript. ([слайды](https://urfu-2017.github.io/javascript-slides/07-classes/index.html#/), <kbd>сtrl</kbd> + <kbd>alt</kbd> + <kbd>N</kbd> – ночной режим, [pdf](07-classes/classes.pdf), [видео](https://www.youtube.com/watch?v=phq_bd6VpuQ&feature=youtu.be))
-8. Асинхронность, часть I. ([слайды](https://urfu-2017.github.io/javascript-slides/08-async/index.html), [pdf](10-async/async.pdf))
+8. Асинхронность, часть I. ([слайды](https://urfu-2017.github.io/javascript-slides/08-async/index.html), [pdf](08-async/async.pdf))
 9. Асинхронность, часть II. ([слайды](https://urfu-2017.github.io/javascript-slides/09-async-II/), [почитать](https://github.com/getify/You-Dont-Know-JS/blob/master/async%20&%20performance/README.md#you-dont-know-js-async--performance), [pdf](09-async-II/async-II.pdf), [видео](https://www.youtube.com/watch?v=9OyWrK9VSCw&feature=youtu.be))
 10. Node.js ([слайды](https://urfu-2017.github.io/javascript-slides/10-nodejs/index.html#/), <kbd>сtrl</kbd> + <kbd>alt</kbd> + <kbd>N</kbd> – ночной режим, [pdf](10-nodejs/nodejs.pdf))
