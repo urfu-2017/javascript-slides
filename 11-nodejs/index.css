@@ -1,0 +1,26 @@
+p.left
+{
+    text-align: left;
+}
+
+.nowrap
+{
+    white-space: nowrap;
+}
+
+.black .invert
+{
+    filter: invert(1);
+}
+
+.white .cli code
+{
+    border-left: 5px solid #dedede !important;
+    background: #efefef !important
+}
+
+.black .cli code
+{
+    border-left: 5px solid #343434 !important;
+    background: #232323 !important
+}
