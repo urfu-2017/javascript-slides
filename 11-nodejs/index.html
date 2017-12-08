@@ -1,0 +1,656 @@
+<!doctype html>
+<html lang="ru">
+    <head>
+        <meta charset="utf-8">
+        <title>Node.js</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+        <link rel="stylesheet" href="../reveal/reveal.css">
+        <link rel="stylesheet" href="../reveal/theme.common.css">
+        <link rel="stylesheet" href="../reveal/theme.white.css">
+        <link rel="stylesheet" href="../reveal/theme.black.css">
+        <link rel="stylesheet" href="index.css">
+    </head>
+    <body class="white">
+        <div class="reveal">
+            <div class="slides">
+
+                <section class="center">
+                    <h1>Node.js</h1>
+                    <div style="text-align: center;">
+                        <small>Часть 2</small>
+                    </div>
+                </section>
+
+                <section class="center">
+                    <h1>Работа с файлами</h1>
+                </section>
+
+                <section>
+                    <h2>Работа с файлами</h2>
+                    <pre><code data-trim>
+                        const fs = require('fs');
+                    </code></pre>
+                    <pre class="fragment javascript"><code data-trim>
+                        fs.readFile(__filename, (error, content) => {
+                            console.log(content);
+                        });
+                    </code></pre>
+                    <p class="fragment"><strong>__filename</strong> – строка, которая хранит абсолютный путь до текущего
+                        файла</p>
+                    <pre class="fragment"><code data-noescape>Buffer <span class="hljs-number">63 6f 6e 73 74 20 66 73 20 3d 20 72 65</span>...</code></pre>
+                </section>
+
+                <section>
+                    <h2>Buffer</h2>
+                    <p class="left">Класс для работы с <strong>бинарными данными</strong></p>
+                    <p class="left">Буфер можно рассматривать как массив чисел, ограниченных диапазоном
+                        <strong>0-255</strong></p>
+                    <p class="left">Каждое число представляет <strong>байт</strong></p>
+                </section>
+
+                <section>
+                    <h2>Buffer</h2>
+                    <pre class="javascript"><code>const letterB = new Buffer([98]);</code></pre>
+                    <pre class="fragment javascript"><code>letterB.toString(); // b</code></pre>
+                    <pre class="fragment javascript"><code>letterB.toString('utf-8'); // b</code></pre>
+                </section>
+
+                <section>
+                    <h2>Buffer</h2>
+                    <pre class="javascript"><code data-trim>
+                        const msg = new Buffer([0x2f, 0x04, 0x3d, 0x04,
+                            0x34, 0x04, 0x35, 0x04, 0x3a, 0x04, 0x41, 0x04]);
+                    </code></pre>
+                    <pre class="fragment javascript" data-fragment-index="1"><code>msg.toString(); // По умолчанию: utf-8</code></pre>
+                    <pre class="fragment javascript" data-fragment-index="1"><code>// \u0004=\u00044\u00045\u0004:\u0004A\u0004</code></pre>
+                    <pre class="fragment javascript" data-fragment-index="2"><code>msg.toString('usc-2');</code></pre>
+                    <pre class="fragment javascript" data-fragment-index="2"><code>// Яндекс</code></pre>
+                </section>
+
+                <section>
+                    <h2>Работа с файлами</h2>
+                    <pre class="javascript"><code data-trim>
+                        fs.readFile(__filename, (error, buffer) => {
+                             console.log(buffer.toString('utf-8'));
+                        });
+                    </code></pre>
+                    <pre class="fragment javascript"><code data-trim>
+                        fs.readFile(__filename, 'utf-8', (error, content) => {
+                            console.log(content);
+                        });
+                    </code></pre>
+                </section>
+
+                <section>
+                    <h2>Работа с файлами</h2>
+                    <pre class="javascript"><code>fs.appendFile();</code></pre>
+                    <pre class="javascript"><code>fs.writeFile();</code></pre>
+                    <pre class="javascript"><code>fs.unlink();</code></pre>
+                    <pre class="javascript"><code>fs.mkdir();</code></pre>
+                </section>
+
+                <section>
+                    <h2>Работа с файлами</h2>
+                    <pre class="javascript"><code>fs.readFileSync(__filename);</code></pre>
+                    <pre class="javascript"><code>fs.writeFileSync(__filename, data);</code></pre>
+                    <pre class="javascript"><code>fs.mkdirSync('/games/diablo3');</code></pre>
+                    <p class="fragment"><strong class="red">Блокируют поток выполнения программы</strong></p>
+                </section>
+
+                <section class="center">
+                    <pre><code data-trim data-noescape>
+                        const path = require('path');
+                        <span class="fragment">
+                        // Windows
+                        path.join('\a', 'b', '..', 'c'); // \a\c
+
+                        // UNIX
+                        path.join('/a', 'b', '..', 'c'); // /a/c
+                        </span>
+                    </code></pre>
+                </section>
+
+                <section>
+                    <h2>Работа с файлами</h2>
+                    <pre class="javascript"><code data-trim>
+                        fs.readFile(__filename, (error, buffer) => {
+                            console.log(buffer);
+                        });
+                    </code></pre>
+                    <p class="nowrap">Данные предварительно сохраняются в <strong>Buffer</strong></p>
+                    <p>Только когда <strong>весь</strong> файл прочитан, данные передаются в обработчик
+                    </p>
+                </section>
+
+                <section class="center">
+                    <img width="962" class="invert" src="images/buffer.png" alt="">
+                </section>
+
+                <section class="center">
+                    <img width="962" class="invert" src="images/stream.png" alt="">
+                </section>
+
+                <section class="center">
+                    <h1>Потоки</h1>
+                </section>
+
+                <section>
+                    <h2>Потоки</h2>
+                    <p>Данные готовы для обработки, как только будет прочитан <strong>первый</strong>
+                        chunk</p>
+                    <p class="left fragment"><span class="green">✓</span> Экономия ресурсов</p>
+                    <p class="left fragment"><span class="green">✓</span> Экономия времени</p>
+                </section>
+
+                <section class="center">
+                    <pre class="javascript"><code data-trim data-noescape>
+                        const fs = require('fs');
+                        const zlib = require('zlib');
+
+                        fs.readFile(__filename, (error, buffer) => {
+                            zlib.gzip(buffer, (error, buffer) => {
+                                fs.writeFile(__filename + '.gz', buffer, error => {
+                                    console.log('Success');
+                                });
+                            });
+                        });
+                    </code></pre>
+                </section>
+
+                <section>
+                    <h2>Экономия ресурсов</h2>
+                    <p><strong>Buffer</strong> в V8 не может быть больше<br> 0x3FFFFFFF bytes ~
+                        <strong>1 Gb</strong></p>
+                    <p class="fragment red"><strong>File size is greater than possible Buffer: 0x3FFFFFFF bytes</strong>
+                    </p>
+                </section>
+
+                <section class="center">
+                    <pre class="javascript"><code data-trim>
+                        const fs = require('fs');
+                        const zlib = require('zlib');
+
+                        fs
+                            .createReadStream(__filename)
+                            .pipe(zlib.createGzip())
+                            .pipe(fs.createWriteStream(__filename + '.gz')
+                            .on('finish', () => console.log('Success'))
+                            .on('error', () => console.error('Error!');
+                    </code></pre>
+                </section>
+
+                <section class="center" style="text-align: center; font-size: 75px;">
+                    <pre class="javascript"><code data-trim>
+                        stream instanceof EventEmitter === true
+                    </code></pre>
+                </section>
+
+                <section>
+                    <h2>Виды потоков</h2>
+                    <p class="left"><strong>Readable</strong> - для чтения</p>
+                    <p class="left"><strong>Writable</strong> - для записи</p>
+                    <p class="left"><strong>Duplex</strong> - для чтения и записи</p>
+                    <p class="left"><strong>Transform</strong> - Duplex, но с преобразованием</p>
+                </section>
+
+                <section>
+                    <h2>Примеры Readable потоков</h2>
+                    <pre class="javascript"><code data-trim>
+                        fs.createReadStream(filename); // fs.ReadStream
+
+                        require('http')
+                            .request(options)
+                            .on('response', res => { // http.IncomingMessage
+                                res.on('data', chunk => {});
+                                res.on('end', () => {});
+                            });
+                    </code></pre>
+                </section>
+
+                <section>
+                    <h2>События Readable потоков</h2>
+                    <p class="left"><strong>data</strong> - при получении чанка данных</p>
+                    <p class="left"><strong>end</strong> - при завершении данных в потоке</p>
+                    <p class="left"><strong>close</strong> - при закрытии потока</p>
+                    <p class="left"><strong>error</strong> - в случае ошибки</p>
+                </section>
+
+                <section>
+                    <h2>Примеры Writable потоков</h2>
+                    <pre class="javascript"><code data-trim>
+                        fs.createWriteStream(filename); // fs.WriteStream
+
+                        server.on('request', (req, res) => { // http.ServerResponse
+                            res.write('Hello, ');
+                            res.write('World!');
+                            res.end();
+                        });
+                    </code></pre>
+                </section>
+
+                <section>
+                    <h2>Методы Writable потоков</h2>
+                    <p class="left"><strong>.write()</strong> - отправляет порцию данных в поток</p>
+                    <p class="left"><strong>.end()</strong> - завершает запись в поток</p><br>
+                    <h2 class="fragment" data-fragment-index="1">События Writable потоков</h2>
+                    <p class="fragment left" data-fragment-index="1"><strong>error</strong> - в случае ошибки передачи
+                        данных</p>
+                </section>
+
+                <section>
+                    <h2>Передача данных из одного потока в другой</h2>
+                    <pre class="cli"><code data-trim>$ cat index.js | grep "function" | wc -l</code></pre>
+                    <pre class="fragment javascript"><code data-trim>
+                        readable.on('data', chunk => {
+                            writable.write(chunk);
+                        });
+                    </code></pre>
+                    <pre class="fragment javascript"><code data-trim>
+                        readable.pipe(writable);
+                    </code></pre>
+                    <pre class="fragment javascript"><code data-trim>
+                        readable.pipe(transform).pipe(writable);
+                    </code></pre>
+                </section>
+
+                <section class="center">
+                    <pre class="javascript"><code data-trim>
+                        const fs = require('fs');
+                        const zlib = require('zlib');
+
+                        fs.readFile(__filename, (error, buffer) => {
+                            zlib.gzip(buffer, (error, buffer) => {
+                                fs.writeFile(__filename + '.gz', buffer, error => {
+                                    console.log('Success');
+                                });
+                            });
+                        });
+                    </code></pre>
+                </section>
+
+                <section class="center">
+                    <pre class="javascript"><code data-trim data-noescape>
+                        const fs = require('fs');
+                        const zlib = require('zlib');
+
+                        fs
+                            .createReadStream(__filename)
+                            <span class="fragment">.pipe(zlib.createGzip())</span>
+                            <span class="fragment">.pipe(fs.createWriteStream(__filename + '.gz')</span>
+                            <span class="fragment">.on('finish', () => console.log('Success'))
+                            .on('error', () => console.error('Error!'));</span>
+                    </code></pre>
+                </section>
+
+                <section>
+                    <h2>Почитать про работу с файлами</h2>
+                    <p>
+                        <a href="https://nodejs.org/api/fs.html">File System</a>
+                        <br>nodejs.org
+                    </p>
+                    <p>
+                        <a href="https://nodejs.org/api/stream.html">Stream</a>
+                        <br>nodejs.org
+                    </p>
+                    <p>
+                        <a href="https://medium.freecodecamp.org/node-js-streams-everything-you-need-to-know-c9141306be93">Node.js
+                            Streams: Everything you need to know</a>
+                        <br>Samer Buna
+                    </p>
+                    <p>
+                        <a href="https://www.packtpub.com/web-development/nodejs-design-patterns-second-edition">Node.js
+                            Design Patterns</a>
+                        <br>Mario Casciaro, Luciano Mammino
+                    </p>
+                </section>
+
+                <section class="center">
+                    <h1>Отладка</h1>
+                </section>
+
+                <section class="center">
+                    <h1>
+                        <pre class="javascript"><code>console.log();</code></pre>
+                    </h1>
+                </section>
+
+                <section>
+                    <h2>Консоль</h2>
+                    <pre class="javascript"><code data-trim>
+                        console.log('Some info'); // Эквивалентно console.info
+
+                        console.error('Some error'); // Эквивалентно console.warn
+                    </code></pre>
+                    <pre class="cli fragment"><code data-trim>
+                        $ node index.js 1>stdout.log 2>stderr.log
+
+                        $ cat stdout.log
+                        Some info
+
+                        $ cat stderr.log
+                        Some error
+                    </code></pre>
+                </section>
+
+                <section>
+                    <h2>Консоль</h2>
+                    <pre class="javascript"><code>console.trace();</code></pre>
+                    <pre class="cli bash"><code data-trim>
+                        $ node index.js 2>stderr.log
+
+                        $ cat stderr.log
+                        Trace
+                            at Object.&lt;anonymous&gt; (/Users/username/examples/console.js:9:9)
+                            at Module._compile (module.js:624:30)
+                            at Object.Module._extensions..js (module.js:635:10)
+                            at Module.load (module.js:545:32)
+                            at tryModuleLoad (module.js:508:12)
+                            at Function.Module._load (module.js:500:3)
+                            at Function.Module.runMain (module.js:665:10)
+                            at startup (bootstrap_node.js:187:16)
+                            at bootstrap_node.js:608:3
+                    </code></pre>
+                </section>
+
+                <section>
+                    <h2>Консоль</h2>
+                    <pre class="javascript"><code data-trim>
+                        console.time('long-operation');
+                        executeSomeLongOperation();
+                        console.timeEnd('long-operation');
+                        // long-operation: 8589.798ms
+                    </code></pre>
+                </section>
+
+                <section>
+                    <h2 style="margin-bottom: 0; padding-bottom: 0">
+                        <pre class="javascript"><code>require('debug');</code></pre>
+                    </h2>
+                    <img src="images/debug-npm.png" alt="npm debug module">
+                </section>
+
+                <section>
+                    <h2 style="margin-bottom: 0; padding-bottom: 0">
+                        <pre class="javascript"><code>require('debug');</code></pre>
+                    </h2>
+                    <pre class="cli"><code>$ DEBUG=express* node server.js</code></pre>
+                    <img class="fragment" src="images/debug-express.png" alt="">
+                </section>
+
+                <section>
+                    <h2 style="margin-bottom: 0; padding-bottom: 0">
+                        <pre class="javascript"><code>require('debug');</code></pre>
+                    </h2>
+                    <pre class="cli"><code>$ npm i debug --save</code></pre>
+                    <pre class="fragment"><code data-trim>
+                        const debug = require('debug');
+                        const app = require('express')();
+
+                        const infoDebug = debug('info');
+
+                        app.get('/', (req, res) => {
+                            infoDebug('some info');
+                            res.send('Hello, world!');
+                        });
+
+                        app.listen(8000);
+                    </code></pre>
+                </section>
+
+                <section>
+                    <h2 style="margin-bottom: 0; padding-bottom: 0">
+                        <pre class="javascript"><code>require('debug');</code></pre>
+                    </h2>
+                    <pre class="cli"><code>$ DEBUG=info node server.js</code></pre>
+                    <img src="images/debug-info.png" alt="">
+                </section>
+
+                <section class="center">
+                    <h1>Debugger</h1>
+                </section>
+
+                <section>
+                    <h2>Debugger</h2>
+                    <pre class="cli"><code>$ node inspect server.js</code></pre>
+                    <img src="./images/inspect.png" alt="">
+                </section>
+
+                <section>
+                    <h2>Debugger</h2>
+                    <div>Команды:</div>
+                    <pre class="bash"><code data-noescape><span class="red">help</span> - Посмотреть полный список доступных команд</code></pre>
+                    <pre class="bash"><code data-noescape><span class="red">repl</span> - Открыть REPL в текущем контесте исполнения</code></pre>
+                    <pre class="bash"><code data-noescape><span class="red">cont, c</span> - Продолжить до точки останова</code></pre>
+                    <pre class="bash"><code data-noescape><span class="red">next, n</span> - Продолжить до следующей строки</code></pre>
+                    <pre class="bash"><code data-noescape><span class="red">step, s</span> - Продолжить с заходом в функцию</code></pre>
+                    <pre class="bash"><code data-noescape><span class="red"> out, o</span> - Продолжить выйдя из текущей функции</code></pre>
+                </section>
+
+                <section>
+                    <h2>Debugger</h2>
+                    <p class="left">Чтобы указать в коде точку останова достаточно добавить в него ключевое слово <span
+                            class="red">debugger</span></p>
+                    <pre><code data-trim>
+                        const app = require('express')();
+
+                        app.get('/', (req, res) => {
+                            debugger;
+                            res.send('Hello, world!');
+                        });
+
+                        app.listen(8000);
+                    </code></pre>
+                </section>
+
+                <section>
+                    <h2>Debugger</h2>
+                    <img src="./images/debugger-2.png" alt="">
+                </section>
+
+                <section class="center">
+                    <h1 class="nowrap">Отладка в Chrome DevTools</h1>
+                </section>
+
+                <section>
+                    <h2>Отладка в Chrome DevTools</h2>
+                    <pre class="cli bash"><code data-trim>
+                        $ node --inspect server.js
+                    </code></pre>
+                    Для того чтобы сразу остановить исполнение кода на первой строке:
+                    <pre class="cli bash"><code data-trim>
+                        $ node --inspect-brk server.js
+                        Debugger listening on ws://127.0.0.1:9229/21bd68bf-b326-49b2-b490-f551fdf08ed1
+                        For help see https://nodejs.org/en/docs/inspector
+                        Listening on http://localhost:8000
+                    </code></pre>
+                </section>
+
+                <section>
+                    <h2>Отладка в Chrome DevTools</h2>
+                    <p class="left">
+                        Для того чтобы открыть отладчик нужно:
+                    </p>
+                    <p class="left">1. Перейти на страницу <span class="red">about:inspect</span></p>
+                    <p class="left">2. В разделе <span class="red">Remote targets</span> выбрать или добавить новую цель
+                        для отладки
+                        и нажать <span class="red">inspect</span></p>
+                </section>
+
+                <section>
+                    <h2>Отладка в Chrome DevTools</h2>
+                    <img src="./images/devtools-bro.png" alt="">
+                </section>
+
+                <section class="center">
+                    <h1>Отладка в VS Code</h1>
+                </section>
+
+                <section>
+                    <h2>Отладка в VS Code</h2>
+                    <p class="left">
+                        Для того чтобы открыть отладчик нужно:
+                    </p>
+                    <p class="left">1. Перейти на вкладку <span class="red">Отладка</span>
+                        <small class="grey" style="vertical-align: middle">(Ctrl+Shift+D)</small>
+                    </p>
+                    <p class="left">2. Создать или выбрать конфигурацию для отладки</p>
+                    <p class="left nowrap">3. Запустить отладчик нажав <span class="red">Начать отладку</span>
+                        <small class="grey" style="vertical-align: middle">(F5)</small>
+                    </p>
+                </section>
+
+                <section>
+                    <h2 class="nowrap">Базовая конфигурация для отладки в VS Code</h2>
+                    <pre><code data-trim>
+                        {
+                            "version": "0.2.0",
+                            "configurations": [
+                                {
+                                    "type": "node",
+                                    "request": "launch",
+                                    "name": "Launch Program",
+                                    "program": "${workspaceFolder}/server.js"
+                                }
+                            ]
+                        }
+                    </code></pre>
+                </section>
+
+                <section>
+                    <h2>Отладка в VS Code</h2>
+                    <img src="./images/code.png">
+                </section>
+
+                <section class="center">
+                    <h2>Почитать про отладку</h2>
+                    <p>
+                        <a href="https://www.npmjs.com/package/debug">debug</a>
+                        <br>npmjs.com
+                    </p>
+                    <p>
+                        <a href="https://nodejs.org/api/debugger.html">Debugger</a>
+                        <br>nodejs.org
+                    </p>
+                    <p>
+                        <a href="https://medium.com/@paul_irish/debugging-node-js-nightlies-with-chrome-devtools-7c4a1b95ae27">Debugging
+                            Node.js with Chrome DevTools</a>
+                        <br>Paul Irish
+                    </p>
+                    <p>
+                        <a class="nowrap"
+                           href="https://blog.risingstack.com/how-to-debug-nodej-js-with-the-best-tools-available/">How
+                            to Debug Node.js with the Best Tools Available</a>
+                        <br>Gergely Nemeth
+                    </p>
+                </section>
+
+                <section class="center">
+                    <h1>Профилирование</h1>
+                </section>
+
+                <section class="center">
+                    <p>Профилирование - это сбор характеристик работы программы для дальнейшего анализа</p>
+                </section>
+
+                <section class="center">
+                    <p>«Преждевременная оптимизация — корень всех зол»</p>
+                    <small style="display: block; text-align: right">Дональд Кнут</small>
+                </section>
+
+                <section class="center">
+                    <p style="white-space: nowrap">Сначала сделайте так, чтобы ваш код работал</p>
+                    <p class="fragment">И только потом, чтобы он работал быстро <span style="opacity: .5">(если это нужно)</span>
+                    </p>
+                </section>
+
+                <section>
+                    <h2>Инструменты</h2>
+                    <pre><code class="nohighlight">1. node --prof + node --prof-process</code></pre>
+                    <pre><code class="nohighlight">2. v8-profiler</code></pre>
+                    <pre><code class="nohighlight">3. 0x + cpuprofilify</code></pre>
+                    <pre><code class="nohighlight">4. node-report</code></pre>
+                    <pre><code class="nohighlight">5. Chrome DevTools + node --inspect</code></pre>
+                    <pre><code class="nohighlight">...</code></pre>
+                </section>
+
+                <section class="center">
+                    <pre><code data-trim>
+                        const crypto = require('crypto');
+                        const app = require('express')();
+
+                        function hash(password) {
+                            return crypto.pbkdf2Sync(
+                                password, 'salt', 100000, 512, 'sha512'
+                            ).toString();
+                        }
+
+                        app.get('/', (req, res) => res.send(hash('p@ssw0rd')));
+
+                        app.listen(8000);
+                    </code></pre>
+                </section>
+
+                <section>
+                    <h2>Профилирование в Chrome DevTools</h2>
+                    <p class="left">В режиме отладки в Chrome DevTools нужно перейти на вкладку <span class="red">profiler</span>
+                        и нажать <span class="red">Start</span></p>
+                    <p class="left fragment">После этого профилировщик начнет собирать информацию по ходу работы нашего
+                        кода</p>
+                    <p class="left fragment">Чтобы закончить профилирование и перейти к просмотру результатов достаточно
+                        нажать <span class="red">Stop</span></p>
+                </section>
+
+                <section>
+                    <h2>Профилирование в Chrome DevTools</h2>
+                    <p class="left">Результаты доступны в трех видах:</p>
+                    <p class="left"><span class="red">Tree (Top Down)</span> - Стек вызовов</p>
+                    <p class="left"><span class="red">Heavy (Bottom Up)</span> - Список всех вызванных функций, вместе с
+                        временем их выполнения</p>
+                    <p class="left"><span class="red">Chart</span> - Графическое представление хода исполнения кода
+                        (Flame Chart)</p>
+                </section>
+
+                <section>
+                    <h2>Профилирование в Chrome DevTools</h2>
+                    <img src="./images/profiler.png">
+                </section>
+
+                <section class="center">
+                    <h2>Почитать про профилирование</h2>
+                    <p>
+                        <a href="https://nodejs.org/en/docs/guides/simple-profiling/">Easy profiling for Node.js
+                            Applications</a>
+                        <br>nodejs.org
+                    </p>
+                    <p>
+                        <a href="https://blog.risingstack.com/post-mortem-diagnostics-debugging-node-js-at-scale/">Node.js
+                            Post-Mortem Diagnostics & Debugging</a>
+                        <br>Gergely Nemeth
+                    </p>
+                </section>
+
+            </div>
+        </div>
+
+        <script src="../reveal/reveal.js"></script>
+        <script>
+            Reveal.initialize({
+                center: false,
+                controls: false,
+                hideAddressBar: true,
+                history: true,
+                progress: true,
+                slideNumber: true,
+                transition: 'none'
+            });
+
+            document.addEventListener('keydown', event => {
+                if (event.altKey && event.ctrlKey && event.code === 'KeyN') {
+                    document.body.classList.toggle('white');
+                    document.body.classList.toggle('black');
+                }
+            });
+        </script>
+    </body>
+</html>

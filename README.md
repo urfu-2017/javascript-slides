@@ -9,3 +9,5 @@
 8. Асинхронность, часть I. ([слайды](https://urfu-2017.github.io/javascript-slides/08-async/index.html), [pdf](08-async/async.pdf))
 9. Асинхронность, часть II. ([слайды](https://urfu-2017.github.io/javascript-slides/09-async-II/), [почитать](https://github.com/getify/You-Dont-Know-JS/blob/master/async%20&%20performance/README.md#you-dont-know-js-async--performance), [pdf](09-async-II/async-II.pdf), [видео](https://www.youtube.com/watch?v=9OyWrK9VSCw&feature=youtu.be))
 10. Node.js ([слайды](https://urfu-2017.github.io/javascript-slides/10-nodejs/index.html#/), <kbd>сtrl</kbd> + <kbd>alt</kbd> + <kbd>N</kbd> – ночной режим, [pdf](10-nodejs/nodejs.pdf))
+11. Node.js 2 ([слайды](https://urfu-2017.github.io/javascript-slides/11-nodejs/index.html#/), <kbd>сtrl</kbd> + <kbd>alt</kbd> + <kbd>N</kbd> – ночной режим, [pdf](11-nodejs/nodejs.pdf))
+
